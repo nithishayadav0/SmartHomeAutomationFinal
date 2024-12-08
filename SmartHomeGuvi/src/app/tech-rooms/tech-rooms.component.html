@@ -1,0 +1,51 @@
+
+<!-- <div *ngIf="rooms.length > 0" class="rooms-list">
+    <h2 class="text-xl font-semibold mb-4">Rooms</h2>
+    <button>TurnOff All Devices</button>
+    <div *ngFor="let room of rooms" class="room-item mb-4 p-4 border rounded-lg"  (click)="navigateToAddDevice(room.roomId)">
+      <h3 class="text-lg font-semibold">{{ room.name }}</h3>
+      <p class="text-sm text-gray-600">{{ room.floor }}</p>
+    </div>
+  </div>
+  
+  <div *ngIf="rooms.length === 0" class="no-rooms">
+    <p>No rooms available.</p>
+  </div>
+   -->
+     <!-- Rooms Grid -->
+     <h2 class="text-4xl font-semibold mb-4 text-center mt-10">Rooms</h2>
+     <div class="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-5 space-x-14 space-y-6">
+      <div
+        *ngFor="let room of rooms"
+        (click)="navigateToAddDevice(room.roomId)"
+        class="card cursor-pointer rounded-lg shadow-md overflow-hidden border border-gray-200 hover:scale-125 hover:bg-gray-100 hover:border-blue-500 hover:shadow-2xl transition-all duration-300 ease-in-out"
+      >
+        <div
+          class="bg-cover bg-center h-32"
+          [ngStyle]="{ 'background-image': getBackgroundImage(room.name) }"
+        ></div>
+        <div class="text-center bg-gray-100 py-3">
+          <p class="text-gray-800 font-medium text-lg">{{ room.name }}</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- <h2 class="text-xl font-semibold mb-4">Rooms</h2>
+    <button class="bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-600 transition duration-300">
+      Turn Off All Devices
+    </button>
+    <div
+      *ngFor="let room of rooms"
+      class="room-item mb-4 p-4 border rounded-lg text-white"
+      [ngStyle]="{ 'background-image': getBackgroundImage(room.name), 'background-size': 'cover', 'background-position': 'center' }"
+      (click)="navigateToAddDevice(room.roomId)"
+    >
+      <h3 class="text-lg font-semibold">{{ room.name }}</h3>
+      <p class="text-sm text-gray-200">{{ room.floor }}</p>
+    </div>
+  </div> -->
+   
+  <div *ngIf="rooms.length === 0" class="no-rooms">
+    <p>No rooms available.</p>
+  </div>
+  

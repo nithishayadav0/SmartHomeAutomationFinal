@@ -1,0 +1,25 @@
+.bg-gray-100 {
+    background-color: #f7fafc;
+  }
+  
+  .shadow-md {
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .rounded-lg {
+    border-radius: 0.5rem;
+  }
+  
+  .text-gray-500 {
+    color: #6b7280;
+  }
+  :host {
+    display: block;
+    max-width: 500px;
+    margin: auto;
+  }
+  
+  button {
+    transition: background-color 0.3s ease;
+  }
+  

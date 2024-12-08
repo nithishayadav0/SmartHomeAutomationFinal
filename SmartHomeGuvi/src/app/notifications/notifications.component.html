@@ -1,0 +1,155 @@
+ <!-- <div class="container mx-auto p-4">
+    <h1 class="text-2xl font-bold mb-4 text-center">Notifications</h1>
+    
+    <div *ngIf="notifications && notifications.length > 0; else noData">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+   
+        <div 
+          *ngFor="let notification of notifications" 
+          class="bg-white shadow-md rounded-lg p-4 border border-gray-200">
+          
+          <h2 class="text-lg font-semibold text-gray-800 mb-2">{{ notification.type }}</h2>
+          <p class="text-gray-600 mb-4">{{ notification.message }}</p>
+          
+          <div class="text-sm text-gray-500 mb-4">
+            <span>Timestamp: </span>
+            <span>{{ notification.timestamp }}</span>
+          </div>
+          
+    
+          <button 
+            (click)="deleteNotification(notification.notificationId)" 
+            class="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded">
+            Delete
+          </button>
+        </div>
+      </div>
+    </div>
+    
+    <ng-template #noData>
+      <div class="text-center py-8">
+        <p class="text-gray-600 text-lg">No notifications available.</p>
+      </div>
+    </ng-template>
+  </div>  -->
+
+  <!-- https://static.vecteezy.com/system/resources/thumbnails/016/704/991/small/abstract-pastel-gradient-color-background-with-blank-blur-and-smooth-vector.jpg -->
+  <!-- <div class="container mx-auto p-4">
+    <h1 class="text-2xl font-bold mb-4 text-center">Notifications</h1>
+  
+    <div *ngIf="notifications && notifications.length > 0; else noData" class="flex flex-col items-center">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div 
+          *ngFor="let notification of notifications" 
+          class="bg-gray-100 shadow-md rounded-lg p-4 border border-gray-200">
+          
+          <h2 class="text-lg font-semibold text-gray-800 mb-2">{{ notification.type }}</h2>
+          <p class="text-gray-600 mb-4">{{ notification.message }}</p>
+          
+          <div class="text-sm text-gray-500 mb-4">
+            <span>Timestamp: </span>
+            <span>{{ notification.timestamp }}</span>
+          </div>
+  
+       
+        </div>
+      </div>
+    </div>
+  
+    <ng-template #noData>
+      <div class="text-center py-8">
+        <p class="text-gray-600 text-lg">No notifications available.</p>
+      </div>
+    </ng-template>
+  </div> -->
+
+  <!--  -->
+
+<!-- 
+  <div class="security-devices">
+    <h2>Security Devices</h2>
+  
+    <table class="table-auto border-collapse border border-gray-300 w-full">
+      <thead>
+        <tr>
+          <th class="border px-4 py-2">ID</th>
+          <th class="border px-4 py-2">Type</th>
+          <th class="border px-4 py-2">Status</th>
+          <th class="border px-4 py-2">Location</th>
+          <th class="border px-4 py-2">Detection History</th>
+          <th class="border px-4 py-2">Alert Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let device of securityDevices">
+          <td class="border px-4 py-2">{{ device.securityDeviceId }}</td>
+          <td class="border px-4 py-2">{{ device.type }}</td>
+          <td class="border px-4 py-2">{{ device.status }}</td>
+          <td class="border px-4 py-2">{{ device.location }}</td>
+          <td class="border px-4 py-2">{{ device.detectionHistory }}</td>
+          <td class="border px-4 py-2">{{ device.alertStatus }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+   -->
+  
+   <div class="bg-gray-100 h-[1200px] flex justify-around items-start py-4">
+    <!-- Notifications Section -->
+    <div class="w-full max-w-lg space-y-4">
+      <h1 class="text-2xl font-bold text-gray-900 mb-6">Notifications</h1>
+  
+      <div *ngIf="notifications && notifications.length > 0; else noData" class="space-y-4">
+        <div *ngFor="let notification of notifications" class="bg-white shadow-md rounded-2xl p-4 flex justify-between items-center space-x-6">
+          <!-- Icon -->
+          <div class="flex-shrink-0 w-10 h-10 rounded-full flex items-center justify-center" [ngStyle]="{'background-color': notification.iconBgColor}">
+            <img [src]="" alt="icon" class="w-6 h-6" />
+          </div>
+  
+          <!-- Notification Content -->
+          <div class="flex-grow ml-4">
+            <p class="text-sm text-gray-800">{{ notification.message }}</p>
+          </div>
+  
+          <!-- Timestamp -->
+          <div class="text-sm text-gray-500">{{ notification.timestamp }}</div>
+  
+          <button (click)="deleteNotification(notification.notificationId)" class="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded space-x-4">
+            Delete
+          </button>
+        </div>
+      </div>
+  
+      <ng-template #noData>
+        <div class="text-center py-12 shadow-lg bg-white p-4">
+          <p class="text-gray-600 text-lg">No notifications available.</p>
+        </div>
+      </ng-template>
+    </div>
+  
+    <!-- Security Devices Section -->
+    <div class="w-full max-w-lg space-y-4">
+      <h1 class="text-2xl font-bold text-gray-900 mb-6">Security Alerts</h1>
+  
+      <div *ngIf="securityDevices && securityDevices.length > 0; else noSecurityData" class="space-y-4">
+        <div *ngFor="let device of securityDevices" class="bg-white shadow-md rounded-2xl p-4 flex justify-between items-center space-x-6">
+          <div class="flex-grow gap-4 mx-8">
+            <p class="text-md text-gray-800"><strong>ID: &nbsp;</strong> {{ device.securityDeviceId }}</p>
+            <p class="text-smd text-gray-800"><strong>Type: &nbsp;</strong> {{ device.type }}</p>
+            <p class="text-md text-gray-800"><strong>Status: &nbsp;</strong> {{ device.status }}</p>
+            <p class="text-md text-gray-800"><strong>Location: &nbsp;</strong> {{ device.location }}</p>
+            <p class="text-md text-gray-800"><strong>Detection History: &nbsp;</strong> {{ device.detectionHistory }}</p>
+            <p class="text-md text-gray-800"><strong>Alert Status:  &nbsp;</strong> {{ device.alertStatus }}</p>
+          </div>
+        </div>
+      </div>
+  
+      <ng-template #noSecurityData>
+        <div class="text-center py-12 shadow-lg bg-white">
+          <p class="text-gray-600 text-lg">No security devices available.</p>
+        </div>
+      </ng-template>
+    </div>
+  </div>
+  
+  

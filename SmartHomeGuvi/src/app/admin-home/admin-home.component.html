@@ -1,0 +1,45 @@
+
+<!-- <button (click)="navigateToTechnicians()">Get Technicians</button>
+<button (click)="navigateToUsers()">Get Users</button> -->
+
+
+<div class="min-h-screen bg-gradient-to-r from-blue-100 to-purple-100 flex flex-col items-center px-6 py-12">
+  <!-- Logout Button -->
+  <button 
+    (click)="logout()" 
+    class="mb-8 px-6 py-3 bg-green-500 text-white rounded-lg font-semibold hover:bg-green-600 transition duration-200 text-center"
+  >
+    Log Out
+  </button>
+
+  <!-- Card Container -->
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl">
+    <!-- Card 1 -->
+    <div class="bg-white rounded-lg shadow-lg p-8 flex flex-col items-center transform transition duration-300 hover:scale-105 hover:shadow-xl" (click)="navigateToTechnicians()">
+      <h2 class="text-2xl font-bold text-gray-900 mb-4">Access Expert Technicians</h2>
+      <p class="text-gray-600 text-center mb-6">
+          Find skilled technicians to support and maintain your devices efficiently.
+      </p>
+      <button
+        class="px-6 py-3 bg-blue-500 text-white rounded-lg font-semibold hover:bg-blue-600 transition duration-200 mb-6"
+      >
+        Get Technicians
+      </button>
+      <img src="https://media.istockphoto.com/id/1333890718/vector/professional-electricians-at-work.jpg?s=612x612&w=0&k=20&c=-B-WUedY2rbsOOJsXAEwjWG3-TFR0XfCUeL6csgsQOQ=" alt="Diagram" class="w-4/5">
+    </div>
+
+    <!-- Card 2 -->
+    <div class="bg-white rounded-lg shadow-lg p-8 flex flex-col items-center transform transition duration-300 hover:scale-105 hover:shadow-xl" (click)="navigateToUsers()">
+      <h2 class="text-2xl font-bold text-gray-900 mb-4">Discover User Insights</h2>
+      <p class="text-gray-600 text-center mb-6">
+          Access comprehensive details about your users to improve engagement and services.
+      </p>
+      <button
+        class="px-6 py-3 bg-blue-500 text-white rounded-lg font-semibold hover:bg-blue-600 transition duration-200 mb-6"
+      >
+        View Users
+      </button>
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRor1NbrrSPgiFiZzRDw5THCkjXKS1yE2b-Vw&s" alt="Example Workflow" class="w-2/5">
+    </div>
+  </div>
+</div>

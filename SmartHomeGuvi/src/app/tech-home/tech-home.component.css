@@ -1,0 +1,61 @@
+button {
+    padding: 8px 12px;
+    border: none;
+    border-radius: 5px;
+    font-size: 14px;
+    cursor: pointer;
+    color: white;
+    text-transform: capitalize;
+  }
+  
+  /* Different colors based on status */
+  button {
+    background-color: #007bff; /* Default blue color */
+  }
+  
+  button:active {
+    transform: scale(0.98); /* Adds a press-down effect */
+  }
+  
+  /* Specific statuses */
+  button:contains("Pending") {
+    background-color: #ffc107; /* Yellow for pending */
+  }
+  
+  button:contains("Completed") {
+    background-color: #28a745; /* Green for completed */
+  }
+  
+  button:contains("Failed") {
+    background-color: #dc3545; /* Red for failed */
+  }
+  
+  /* Hover effect */
+  button:hover {
+    opacity: 0.9;
+  }
+  .lightbox-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+  
+  .lightbox-content {
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    width: 300px;
+  }
+  
+  .lightbox-content h2 {
+    margin-top: 0;
+  }
+  

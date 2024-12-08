@@ -1,0 +1,182 @@
+
+<!-- <div class="container">
+    <h2>Global Automations</h2>
+  
+    
+    <form (ngSubmit)="addAutomation()" class="mb-4">
+      <div>
+        <label for="triggerEvent">Trigger Event:</label>
+        <input id="triggerEvent" [(ngModel)]="newAutomation.triggerEvent" name="triggerEvent" required />
+      </div>
+  
+      <div>
+        <label for="action">Action:</label>
+        <input id="action" [(ngModel)]="newAutomation.action" name="action" required />
+      </div>
+  
+      <div>
+        <label for="timeSchedule">Time Schedule:</label>
+        <input id="timeSchedule" [(ngModel)]="newAutomation.timeSchedule" name="timeSchedule" required />
+      </div>
+  
+      <div>
+        <label for="status">Status:</label>
+        <select id="status" [(ngModel)]="newAutomation.status" name="status">
+          <option value="Active">Active</option>
+          <option value="Inactive">Inactive</option>
+        </select>
+      </div>
+  
+      <div>
+        <label for="description">Description:</label>
+        <textarea id="description" [(ngModel)]="newAutomation.description" name="description" required></textarea>
+      </div>
+  
+      <button type="submit" class="btn btn-primary">Add Automation</button>
+    </form>
+
+    <ul>
+      <li *ngFor="let automation of automations">
+        <strong>{{ automation.triggerEvent }}</strong> - {{ automation.action }} ({{ automation.status }})
+        <br />
+        Scheduled: {{ automation.timeSchedule }}
+        <br />
+        Description: {{ automation.description }}
+      </li>
+    </ul>
+  </div>
+   -->
+
+
+   <!-- <div class="container">
+    <h2>Global Automations</h2>
+  
+
+    <form (ngSubmit)="addAutomation()" class="mb-4">
+      <div>
+        <label for="triggerEvent">Trigger Event:</label>
+        <input id="triggerEvent" [(ngModel)]="newAutomation.triggerEvent" name="triggerEvent" required />
+      </div>
+  
+      <div>
+        <label for="action">Action:</label>
+        <input id="action" [(ngModel)]="newAutomation.action" name="action" required />
+      </div>
+  
+      <div>
+        <label for="timeSchedule">Time Schedule:</label>
+        <input id="timeSchedule" [(ngModel)]="newAutomation.timeSchedule" name="timeSchedule" required />
+      </div>
+  
+      <div>
+        <label for="status">Status:</label>
+        <select id="status" [(ngModel)]="newAutomation.status" name="status">
+          <option value="Active">Active</option>
+          <option value="Inactive">Inactive</option>
+        </select>
+      </div>
+  
+      <div>
+        <label for="description">Description:</label>
+        <textarea id="description" [(ngModel)]="newAutomation.description" name="description" required></textarea>
+      </div>
+  
+      <button type="submit" class="btn btn-primary">Add Automation</button>
+    </form>
+  
+
+    <table class="automation-table">
+      <thead>
+        <tr>
+          <th>Trigger Event</th>
+          <th>Action</th>
+          <th>Status</th>
+          <th>Time Schedule</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let automation of automations">
+          <td>{{ automation.triggerEvent }}</td>
+          <td>{{ automation.action }}</td>
+          <td [ngClass]="automation.status === 'Active' ? 'status-active' : 'status-inactive'">{{ automation.status }}</td>
+          <td>{{ automation.timeSchedule }}</td>
+          <td>{{ automation.description }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div> -->
+  
+  <div class="container">
+    <h2 class="text-center text-3xl">Global Automations</h2>
+  
+    <!-- Button to open the modal -->
+    <button (click)="toggleForm()" class="btn btn-secondary mb-4">
+      {{ showForm ? 'Cancel' : 'Add Automation' }}
+    </button>
+  
+    <!-- Modal Background and Content -->
+    <div *ngIf="showForm" class="fixed inset-0 flex items-center justify-center bg-gray-500 bg-opacity-50 z-50">
+      <div class="bg-white p-6 rounded-lg shadow-lg max-w-md w-full">
+        <h3 class="text-lg font-semibold mb-4">Add Automation</h3>
+       
+        <form (ngSubmit)="addAutomation()">
+          <div>
+            <label for="triggerEvent">Trigger Event:</label>
+            <input id="triggerEvent" [(ngModel)]="newAutomation.triggerEvent" name="triggerEvent" required class="border p-2 w-full"/>
+          </div>
+  
+          <div>
+            <label for="action">Action:</label>
+            <input id="action" [(ngModel)]="newAutomation.action" name="action" required class="border p-2 w-full"/>
+          </div>
+  
+          <div>
+            <label for="timeSchedule">Time Schedule:</label>
+            <input id="timeSchedule" [(ngModel)]="newAutomation.timeSchedule" name="timeSchedule" required class="border p-2 w-full"/>
+          </div>
+  
+          <div>
+            <label for="status">Status:</label>
+            <select id="status" [(ngModel)]="newAutomation.status" name="status" class="border p-2 w-full">
+              <option value="Active">Active</option>
+              <option value="Inactive">Inactive</option>
+            </select>
+          </div>
+  
+          <div>
+            <label for="description">Description:</label>
+            <textarea id="description" [(ngModel)]="newAutomation.description" name="description" required class="border p-2 w-full"></textarea>
+          </div>
+          <div class="flex justify-between">
+          <button type="submit" class="btn btn-primary mt-4 bg-blue-500 text-white p-2 rounded">Add Automation</button>
+          <h3 class="btn btn-primary mt-4 bg-red-500 text-white p-2 rounded" (click)="toggleForm()">Cancel</h3>
+        </div>
+        </form>
+      </div>
+    </div>
+  
+    <!-- Automation List Table -->
+    <table class="automation-table mt-6 w-full table-auto border-collapse border border-gray-300">
+      <thead>
+        <tr>
+          <th class="px-4 py-2 border">Trigger Event</th>
+          <th class="px-4 py-2 border">Action</th>
+          <th class="px-4 py-2 border">Status</th>
+          <th class="px-4 py-2 border">Time Schedule</th>
+          <th class="px-4 py-2 border">Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let automation of automations">
+          <td class="px-4 py-2 border">{{ automation.triggerEvent }}</td>
+          <td class="px-4 py-2 border">{{ automation.action }}</td>
+          <td class="px-4 py-2 border" [ngClass]="automation.status === 'Active' ? 'text-green-500' : 'text-red-500'">{{ automation.status }}</td>
+          <td class="px-4 py-2 border">{{ automation.timeSchedule }}</td>
+          <td class="px-4 py-2 border">{{ automation.description }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  
+  

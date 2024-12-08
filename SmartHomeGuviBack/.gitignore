@@ -1,0 +1,17 @@
+Services/AutomationMonitoringService.cs
+Services/DeviceMonitoringService.cs
+Services/EnergyUsageService.cs
+Services/SecurityDeviceService.cs
+/bin/Debug/net8.0/appsettings.json
+# Exclude sensitive configuration files
+appsettings.json
+
+# Exclude specific service files
+Services/AutomationMonitoringService.cs
+Services/DeviceMonitoringService.cs
+Services/EnergyUsageService.cs
+Services/SecurityDeviceService.cs
+
+# Exclude bin and obj directories
+/bin/
+/obj/

@@ -1,0 +1,155 @@
+
+<!-- <div *ngIf="userList.length > 0" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4"  >
+    <h3 class="text-xl font-bold mb-4">User List</h3>
+   
+    
+   
+    <div *ngFor="let user of userList" class="bg-white p-4 rounded-lg shadow-lg">
+      <div (click)="navigateToRooms(user.username, user.email)">
+      <h4 class="text-lg font-semibold">{{ user.username }}</h4>
+      <p class="text-gray-600">{{ user.email }}</p>
+      <p>Status: {{ user.isActive ? 'Active' : 'Inactive' }}</p>
+
+      
+    </div>
+    <button
+    class="bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-600 transition duration-300"
+    (click)="deactivateUser(user.email)"
+  >
+    {{ user.isActive ? 'Deactivate User' : 'Activate User' }}
+  </button>
+    
+ 
+    </div>
+  </div>
+   -->
+   <div class="flex items-center justify-center mt-20 space-x-6">
+    <h3 class="text-3xl font-semibold text-center">User List</h3>
+    <img 
+      src="https://static.thenounproject.com/png/374770-200.png" 
+      class="w-12 h-12"
+      alt="Icon"
+    />
+  </div>
+  
+   <div class="mx-15 gap-6">
+   <button (click)="navigateToUser()" class="mx-15 bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 gap-6">
+     Add User
+   </button>
+  </div>
+   <div *ngIf="userList.length > 0" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+   
+    <!-- Loop through the userList to display each user as a card -->
+    <div *ngFor="let user of userList" class="bg-white p-6 rounded-lg shadow-lg flex flex-col items-start bg-gray-100">
+      <div (click)="navigateToRooms(user.username, user.email)" class="mb-4">
+        <h4 class="text-lg font-semibold">{{ user.username }}</h4>
+        <p class="text-gray-600">{{ user.email }}</p>
+        <p>Status: {{ user.isActive ? 'Active' : 'Inactive' }}</p>
+      </div>
+      
+      <button
+        class="bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-600 transition duration-300"
+        (click)="deactivateUser(user.email)"
+      >
+        {{ user.isActive ? 'Deactivate User' : 'Activate User' }}
+      </button>
+    </div>
+  </div>
+  
+   <!-- Show error message if the list is empty or there's an error fetching the data -->
+  <div *ngIf="errorMessage" class="error-message">
+    <p class="text-red-500">{{ errorMessage }}</p>
+  </div>
+  
+
+  <!-- Add User Button -->
+
+
+<!-- Lightbox Form -->
+<div *ngIf="isLightboxOpen" class="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
+  <div class="relative z-10 p-6 max-w-md w-full bg-white bg-opacity-90 border border-blue-500 rounded-xl shadow-lg h-auto">
+    <button (click)="closeLightbox()" class="absolute top-4 right-4 text-gray-500 hover:text-gray-700 text-lg">&times;</button>
+    
+    <h2 class="text-3xl font-semibold text-center mb-6 text-blue-600">User Registration</h2>
+    <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+      <!-- Username -->
+      <div class="mb-4">
+        <label for="username" class="block mb-2 text-lg font-medium text-gray-700">Username</label>
+        <input
+          id="username"
+          type="text"
+          formControlName="username"
+          class="border border-gray-300 rounded-lg px-4 py-3 w-full shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+          placeholder="Enter your username"
+        />
+        <small class="text-red-500" *ngIf="userForm.get('username')?.errors?.['required']">
+          Username is required.
+        </small>
+      </div>
+
+      <!-- Password -->
+      <div class="mb-4">
+        <label for="password" class="block mb-2 text-lg font-medium text-gray-700">Password</label>
+        <input
+          id="password"
+          type="password"
+          formControlName="password"
+          class="border border-gray-300 rounded-lg px-4 py-3 w-full shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+          placeholder="Enter your password"
+        />
+        <small class="text-red-500" *ngIf="userForm.get('password')?.errors?.['required']">
+          Password is required.
+        </small>
+      </div>
+
+      <!-- Role -->
+      <div class="mb-4">
+        <label for="role" class="block mb-2 text-lg font-medium text-gray-700">Role</label>
+        <select
+          id="role"
+          formControlName="role"
+          class="border border-gray-300 rounded-lg px-4 py-3 w-full shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+        >
+          <option value="">Select a role</option>
+          <option value="Homeowner">Homeowner</option>
+          <option value="Administrator">Administrator</option>
+          <option value="Guest">Guest</option>
+          <option value="DeviceTechnician">Device Technician</option>
+        </select>
+        <small class="text-red-500" *ngIf="userForm.get('role')?.errors?.['required']">
+          Role is required.
+        </small>
+      </div>
+
+      <!-- Email -->
+      <div class="mb-4">
+        <label for="email" class="block mb-2 text-lg font-medium text-gray-700">Email</label>
+        <input
+          id="email"
+          type="email"
+          formControlName="email"
+          class="border border-gray-300 rounded-lg px-4 py-3 w-full shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+          placeholder="Enter your email"
+        />
+        <small class="text-red-500" *ngIf="userForm.get('email')?.errors?.['required']">
+          Email is required.
+        </small>
+      </div>
+
+      <!-- IsActive -->
+      <div class="mb-4 flex items-center">
+        <input type="checkbox" formControlName="isActive" class="mr-2" />
+        <label class="text-gray-700">Active User</label>
+      </div>
+
+      <!-- Submit Button -->
+      <button
+        type="submit"
+        class="bg-blue-500 text-white px-6 py-3 w-full rounded-lg shadow-md hover:bg-blue-600 transition duration-300"
+        [disabled]="userForm.invalid"
+      >
+        Register
+      </button>
+    </form>
+  </div>
+</div>

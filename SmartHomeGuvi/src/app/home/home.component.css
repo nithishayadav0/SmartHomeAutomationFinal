@@ -1,0 +1,22 @@
+/* CSS for slide-in from the top animation with longer duration */
+@keyframes slideFromTop {
+    0% {
+      opacity: 0;
+      transform: translateY(-50px); /* Start above the screen */
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0); /* End at the normal position */
+    }
+  }
+  
+  /* Apply the animation with longer duration and smoother easing */
+  .animate-slide-from-top {
+    animation: slideFromTop 2s ease-in-out; /* Increased duration to 2s */
+  }
+  .text-center {
+    display: flex;
+    justify-content: center;  /* Centers horizontally */
+    align-items: center;      /* Centers vertically */
+    height: 100%;             /* Ensures full container height is used */
+  }  

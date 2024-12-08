@@ -1,0 +1,106 @@
+<div class="bg-blue-100 flex flex-col h-screen">
+  <!-- Header Section -->
+  <header class="flex items-center justify-between bg-blue-600 text-white p-4">
+    <div class="text-3xl font-semibold">Smart House</div>
+  </header>
+
+  <!-- Main Content Section -->
+  <div class="relative flex-grow flex justify-center items-center">
+    <!-- Background Image -->
+    <div
+      class="absolute inset-0 bg-cover bg-center"
+      style="background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQo8k6IfltL7Rnwr94TbX39KPkjHO4VeGakPHIvV7EC-iCe-WUbNykUGnogs9iz-GyyB7I&usqp=CAU');"
+    ></div>
+
+    <!-- Dark Overlay for Contrast -->
+    <div class="absolute inset-0 bg-black bg-opacity-50"></div>
+
+    <!-- Registration Form Section -->
+    <div class="relative z-10 p-6 max-w-md w-full bg-white bg-opacity-90 border border-blue-500 rounded-xl shadow-lg mt-16 h-auto">
+
+      <h2 class="text-3xl font-semibold text-center mb-6 text-blue-600">User Registration</h2>
+      <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+        <!-- Username -->
+        <div class="mb-4">
+          <label for="username" class="block mb-2 text-lg font-medium text-gray-700">Username</label>
+          <input
+            id="username"
+            type="text"
+            formControlName="username"
+            class="border border-gray-300 rounded-lg px-4 py-3 w-full shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+            placeholder="Enter your username"
+          />
+          <small class="text-red-500" *ngIf="userForm.get('username')?.errors?.['required']">
+            Username is required.
+          </small>
+        </div>
+
+        <!-- Password -->
+        <div class="mb-4">
+          <label for="password" class="block mb-2 text-lg font-medium text-gray-700">Password</label>
+          <input
+            id="password"
+            type="password"
+            formControlName="password"
+            class="border border-gray-300 rounded-lg px-4 py-3 w-full shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+            placeholder="Enter your password"
+          />
+          <small class="text-red-500" *ngIf="userForm.get('password')?.errors?.['required']">
+            Password is required.
+          </small>
+        </div>
+
+        <!-- Role -->
+        <div class="mb-4">
+          <label for="role" class="block mb-2 text-lg font-medium text-gray-700">Role</label>
+          <select
+            id="role"
+            formControlName="role"
+            class="border border-gray-300 rounded-lg px-4 py-3 w-full shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+          >
+            <option value="">Select a role</option>
+            <option value="Homeowner">Homeowner</option>
+            <option value="Administrator">Administrator</option>
+            <option value="Guest">Guest</option>
+            <option value="DeviceTechnician">Device Technician</option>
+          </select>
+          <small class="text-red-500" *ngIf="userForm.get('role')?.errors?.['required']">
+            Role is required.
+          </small>
+        </div>
+
+        <!-- Email -->
+        <div class="mb-4">
+          <label for="email" class="block mb-2 text-lg font-medium text-gray-700">Email</label>
+          <input
+            id="email"
+            type="email"
+            formControlName="email"
+            class="border border-gray-300 rounded-lg px-4 py-3 w-full shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+            placeholder="Enter your email"
+          />
+          <small class="text-red-500" *ngIf="userForm.get('email')?.errors?.['required']">
+            Email is required.
+          </small>
+        </div>
+
+        <!-- IsActive -->
+        <div class="mb-4 flex items-center">
+          <input type="checkbox" formControlName="isActive" class="mr-2" />
+          <label class="text-gray-700">Active User</label>
+        </div>
+
+        <!-- Submit Button -->
+        <button
+          type="submit"
+          class="bg-blue-500 text-white px-6 py-3 w-full rounded-lg shadow-md hover:bg-blue-600 transition duration-300"
+          [disabled]="userForm.invalid"
+        >
+          Register
+        </button>
+      </form>
+    </div>
+  </div>
+</div>
+
+

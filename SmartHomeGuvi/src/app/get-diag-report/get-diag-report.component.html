@@ -1,0 +1,37 @@
+<!-- <h1>Diagnostics Report</h1>
+<div class="container">
+    
+  
+    
+
+
+    <div *ngIf="diagnosticsReport">
+      <h3>Diagnostics Report</h3>
+      <p>Battery Level: {{ diagnosticsReport.batteryLevel }}</p>
+      <p>Connectivity: {{ diagnosticsReport.connectivityStatus }}</p>
+      <p>Firmware Version: {{ diagnosticsReport.firmwareVersion }}</p>
+    </div>
+  
+  </div> -->
+  <div class="flex items-center justify-center h-screen bg-gray-900">
+    <div
+      class="max-w-md bg-gray-800 text-white rounded-lg shadow-lg p-6"
+    >
+      <h1 class="text-2xl font-bold mb-4 text-center">Diagnostics Report</h1>
+      <div *ngIf="diagnosticsReport" class="space-y-4">
+        <div class="bg-gray-700 p-4 rounded-lg">
+          <p class="text-gray-400">Battery Level:</p>
+          <p class="text-lg">{{ diagnosticsReport.batteryLevel }}</p>
+        </div>
+        <div class="bg-gray-700 p-4 rounded-lg">
+          <p class="text-gray-400">Connectivity:</p>
+          <p class="text-lg">{{ diagnosticsReport.connectivityStatus }}</p>
+        </div>
+        <div class="bg-gray-700 p-4 rounded-lg">
+          <p class="text-gray-400">Firmware Version:</p>
+          <p class="text-lg">{{ diagnosticsReport.firmwareVersion }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  

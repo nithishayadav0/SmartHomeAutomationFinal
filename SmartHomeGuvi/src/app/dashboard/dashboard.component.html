@@ -1,0 +1,517 @@
+
+<!-- 
+<div class="mt-10 mx-4">
+<h1 class="text-3xl font-bold my-4 font-serif">
+  Welcome,  {{userName}}!!
+</h1>
+<div class="flex my-4">
+
+  <img src="https://www.shutterstock.com/image-vector/weather-forecast-app-interface-vector-600nw-2045868041.jpg" alt="Weather Forecast" class="w-8 h-8 object-cover">
+  <h1 class="text-xl font-semibold text-center text-blue-500 mr-4 px-4">
+    {{ currentDate }} | {{ temperature }}°C
+  </h1>
+</div>
+</div>  -->
+
+ <!--<div class="mt-10 px-4">
+  <h1 class="text-4xl font-semi-bold text-center mb-8">Rooms</h1> 
+ 
+  <div *ngIf="userRole === 'Homeowner'" class="flex justify-between items-center mx-20 ">
+    <button
+      (click)="toggleForm()"
+      class="bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+    >
+      Add Room
+    </button>
+  </div> 
+
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 p-20 space-x-7">
+    <div
+      *ngFor="let room of roomNames"
+      (click)="navigateToAddDevice(room.roomId)"
+      class="card cursor-pointer rounded-lg shadow-md overflow-hidden"
+    >
+      <div
+        class="bg-cover bg-center h-32"
+        [ngStyle]="{
+          'background-image': getBackgroundImage(room.name)
+        }"
+      ></div>
+      <div class="text-center bg-gray-100 py-2">
+        <p class="text-gray-800 font-semibold text-lg">{{ room.name }}</p>
+      </div>
+    </div>
+  </div>
+</div> 
+
+
+ <div *ngIf="userRole === 'Homeowner'" class="mt-10 flex flex-wrap gap-4 justify-center">
+  <button
+    (click)="navigateToAutomations()"
+    class="bg-green-600 text-white py-2 px-4 rounded-md hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500"
+  >
+    Automations
+  </button>
+  <button
+    (click)="navigateToUsageReport()"
+    class="bg-purple-600 text-white py-2 px-4 rounded-md hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-purple-500"
+  >
+    Report
+  </button>
+  <button
+    (click)="navigateToNotifications()"
+    class="bg-yellow-600 text-white py-2 px-4 rounded-md hover:bg-yellow-700 focus:outline-none focus:ring-2 focus:ring-yellow-500"
+  >
+    Notifications
+  </button>
+  <button
+    (click)="logout()"
+    class="bg-red-600 text-white py-2 px-4 rounded-md hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500"
+  >
+    Log Out
+  </button>
+  <button
+    (click)="navigateTomaintenaceList()"
+    class="bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
+  >
+    Maintenance List
+  </button>
+</div> -->
+
+
+<!-- <div class="flex h-screen">
+  
+  <div class="sidebar w-64 bg-gray-800 text-white p-4 flex flex-col gap-4">
+    <button
+      (click)="navigateToAutomations()"
+      class="bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 mt-10"
+    >
+      Automations
+    </button>
+    <button
+      (click)="navigateToUsageReport()"
+      class="bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-purple-500 mt-10"
+    >
+      Report
+    </button>
+    <button
+      (click)="navigateToNotifications()"
+      class="bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-yellow-700 focus:outline-none focus:ring-2 focus:ring-yellow-500  mt-10"
+    >
+      Notifications
+    </button>
+    <button
+      (click)="logout()"
+      class="bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500  mt-10"
+    >
+      Log Out
+    </button>
+    <button
+      (click)="navigateTomaintenaceList()"
+      class="bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500  mt-10"
+    >
+      Maintenance List
+    </button>
+  </div>
+
+ 
+  <div class="flex-1 flex flex-col">
+  
+
+    <div class="mt-10 mx-4">
+      <h1 class="text-3xl font-bold my-4 font-serif">
+        Welcome, {{ userName }}!!
+      </h1>
+      <div class="flex my-4">
+        <img
+          src="https://www.shutterstock.com/image-vector/weather-forecast-app-interface-vector-600nw-2045868041.jpg"
+          alt="Weather Forecast"
+          class="w-8 h-8 object-cover"
+        />
+        <h1 class="text-xl font-semibold text-center text-blue-500 mr-4 px-4">
+          {{ currentDate }} | {{ temperature }}°C
+        </h1>
+      </div>
+    </div>
+
+ 
+    <div class="mt-10 px-4">
+      <h1 class="text-4xl font-semi-bold text-center mb-8">Rooms</h1>
+      <div
+        *ngIf="userRole === 'Homeowner'"
+        class="flex justify-center mb-4"
+      >
+        <button
+          (click)="toggleForm()"
+          class="bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
+        >
+          Add Room
+        </button>
+      </div>
+
+  
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 px-10">
+        <div
+          *ngFor="let room of roomNames"
+          (click)="navigateToAddDevice(room.roomId)"
+          class="card cursor-pointer rounded-lg shadow-md overflow-hidden"
+        >
+          <div
+            class="bg-cover bg-center h-32"
+            [ngStyle]="{ 'background-image': getBackgroundImage(room.name) }"
+          ></div>
+          <div class="text-center bg-gray-100 py-2">
+            <p class="text-gray-800 font-semibold text-lg">{{ room.name }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div> -->
+
+
+
+<div class="flex flex-col h-screen">
+  <!-- Navbar Section -->
+  <!-- <nav class="bg-blue-600 text-white p-4 flex justify-between items-center shadow-lg">
+    <div class="flex items-center gap-4">
+      <img
+        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSezgU7t_gp4zI-ru3DQIZBA6y6ncsVP0nRng&s"
+        alt="Logo"
+        class="w-8 h-8"
+      />
+      <h1 class="text-2xl font-semi-bold">Smart Home</h1>
+    </div>
+    <div class="flex items-center gap-6">
+      <div class="flex space-x-2">
+      <img src="https://img.icons8.com/?size=100&id=57714&format=png " class=" w-8 h-8">
+      <button class="hover:text-gray-300 text-xl" (click)="navigateToUsageReport()">Report</button>
+    </div>
+    <div class="flex space-x-2">
+      <img src="https://img.icons8.com/?size=160&id=105374&format=png" class=" w-8 h-8">
+      <button class="hover:text-gray-300 text-xl" (click)="navigateToNotifications()">Notifications</button>
+    </div>
+    <div class="flex space-x-2">
+      <img src="https://img.icons8.com/?size=160&id=103122&format=png" class=" w-8 h-8">
+      <button class="hover:text-gray-300 text-xl"  (click)="navigateTomaintenaceList()"> Maintenance List</button>
+    </div>
+    <div class="flex space-x-2">
+      <img src="https://img.icons8.com/?size=100&id=12640&format=png" class=" w-8 h-8">
+      <button class="hover:text-gray-300 text-xl"  (click)="navigateToAutomations()"> Automations</button>
+    </div>
+    <div class="flex ">
+      <img src="https://img.icons8.com/?size=64&id=15265&format=png" class=" w-8 h-8">
+      <button class="bg-blue-600 py-1 px-3 rounded-md hover:bg-blue-700 text-xl">
+        {{ userName }}
+      </button>
+    </div>
+    <div class="flex space-x-2">
+      <img src="https://img.icons8.com/?size=100&id=2445&format=png" class=" w-6 h-6">
+      <button class="hover:text-gray-300 text-xl"  (click)="logout()">Log Out</button>
+    </div>
+    </div>
+  </nav> -->
+  
+  <app-navbar></app-navbar>
+  <!-- Main Content Section -->
+  <div class="flex justify-around">
+    <div>
+    <!-- Welcome Section -->
+    <div class="mt-40 px-6 mx-10">
+      <!-- Card Container with Ash background -->
+      <div class="bg-gray-90 rounded-lg p-4 max-w-md shadow-lg card">
+        <h1 class="text-3xl font-semi-bold my-4">
+          Welcome, {{ userName }}!!
+        </h1>
+        <div class="flex items-center  my-4">
+          <img
+            src="https://www.shutterstock.com/image-vector/weather-forecast-app-interface-vector-600nw-2045868041.jpg"
+            alt="Weather Forecast"
+            class="w-8 h-8 object-cover"
+          />
+          <h1 class="text-xl font-semibold text-blue-500 ml-4 text-center">
+            {{ currentDate }} | {{ temperature }}°C
+          </h1>
+        </div>
+      </div>
+    </div>
+
+    <div class="mt-20 px-6 mx-10 ">
+     
+      <div class="bg-gray-90 rounded-lg p-4 w-96 h-auto shadow-lg">
+        <h1 class="text-3xl font-semi-bold my-4">
+          Quick Access
+        </h1>
+        <div class=" flex  justify-between my-4">
+     
+          <div class="gap-4">
+            <button
+            (click)="toggleKettle()"
+            [class.bg-blue-500]="isKettleActive"
+            [class.border-2]="true"
+            [class.border-blue-500]="isKettleActive"
+            [class.border-black-500]="!isKettleActive"
+            [class.text-blue-500]="!isKettleActive"
+            [class.text-white]="isKettleActive"
+            class="w-16 h-16 rounded-full border-solid bg-transparent text-xl transition duration-300 ease-in-out flex justify-center items-center"
+          >
+            <span>
+              <img src="https://cdn-icons-png.flaticon.com/512/1530/1530311.png" class="w-8 h-8" />
+            </span>
+          </button>
+          
+          <p class="mx-3">Kettle</p>
+        </div>
+        <div>
+          <button
+          (click)="toggleVaccum()"
+          [class.bg-blue-500]="isVaccumActive"
+          [class.border-2]="true"
+          [class.border-blue-500]="isVaccumActive"
+          [class.border-black-500]="!isVaccumActive"
+          [class.text-blue-500]="!isVaccumActive"
+          [class.text-white]="isVaccumActive"
+          class="w-16 h-16 rounded-full border-solid bg-transparent text-xl transition duration-300 ease-in-out flex justify-center items-center"
+        >
+          <span>
+            <img src="https://cdn-icons-png.flaticon.com/128/7075/7075778.png" class="w-8 h-8" />
+          </span>
+        </button>
+     
+        <p class="mx-3">Vaccum</p>
+        <p class="mx-3">Cleaner</p>
+      </div>
+        <div>
+          <button
+          (click)="toggleTv()"
+          [class.bg-blue-500]="isTvActive"
+          [class.border-2]="true"
+          [class.border-blue-500]="isTvActive"
+          [class.border-black-500]="!isTvActive"
+          [class.text-blue-500]="!isTvActive"
+          [class.text-white]="isTvActive"
+          class="w-16 h-16 rounded-full border-solid bg-transparent text-xl transition duration-300 ease-in-out flex justify-center items-center"
+        >
+          <span>
+            <img src="https://cdn-icons-png.flaticon.com/128/2502/2502208.png" class="w-8 h-8" />
+          </span>
+        </button>
+        
+        <p class="mx-3">Tv</p>
+      </div>
+      <div>
+        <button
+        (click)="toggleSecurity()"
+        [class.bg-blue-500]="isSecurityActive"
+        [class.border-2]="true"
+        [class.border-blue-500]="isSecurityActive"
+        [class.border-black-500]="!isSecurityActive"
+        [class.text-blue-500]="!isSecurityActive"
+        [class.text-white]="isSecurityActive"
+        class="w-16 h-16 rounded-full border-solid bg-transparent text-xl transition duration-300 ease-in-out flex justify-center items-center"
+      >
+        <span>
+          <img src="https://cdn-icons-png.flaticon.com/512/139/139838.png" class="w-8 h-8" />
+        </span>
+      </button>
+      
+      <p class="mx-3">Security</p>
+      <p class="mx-3">Cameras</p>
+    </div>
+    
+        
+      </div>
+    </div>
+  </div>
+</div>
+  <div>
+    <img src="https://www.puravankara.com/real-estate-blog/wp-content/uploads/2023/12/Home-Automation.jpg" class=" mt-40 rounded-lg " style="width:700px; height:auto;">
+  </div>
+    
+  </div>
+    <!-- Rooms Section -->
+    <div class="mt-6 px-6">
+      <h1 class="text-4xl font-semi-bold mb-8 mt-14 mx-16">Rooms</h1>
+      <div
+          *ngIf="userRole === 'Homeowner'"
+          class="flex  mb-8 mt-8 mx-16 "
+        >
+          <button
+            (click)="toggleForm()"
+            class="bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
+          >
+            Add Room
+          </button>
+        </div>
+      <div
+        *ngIf="userRole === 'Homeowner'"
+        class="flex justify-center mb-6"
+      >
+      <div class="mt-10 px-4">
+        
+        
+  
+
+      <!-- Rooms Grid -->
+      <div class="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-5 space-x-14 space-y-6">
+        <div
+          *ngFor="let room of roomNames"
+          (click)="navigateToAddDevice(room.roomId)"
+          class="card cursor-pointer rounded-lg shadow-md overflow-hidden border border-gray-200 hover:scale-125 hover:bg-gray-100 hover:border-blue-500 hover:shadow-2xl transition-all duration-300 ease-in-out"
+        >
+          <div
+            class="bg-cover bg-center h-32"
+            [ngStyle]="{ 'background-image': getBackgroundImage(room.name) }"
+          ></div>
+          <div class="text-center bg-gray-100 py-3">
+            <p class="text-gray-800 font-medium text-lg">{{ room.name }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Lightbox -->
+<div *ngIf="showForm" class="lightbox" (click)="toggleForm()">
+  <div class="lightbox-content" (click)="$event.stopPropagation()">
+    <button
+      type="button"
+      class="text-semi-bold absolute top-4 right-4 text-xl font-bold text-gray-700"
+      (click)="toggleForm()"
+    >
+      X
+    </button>
+
+    <form (ngSubmit)="onAddRoom()">
+      <div class="mb-4">
+        <label for="roomName" class="block text-gray-700">Room Name</label>
+        <input
+          id="roomName"
+          [(ngModel)]="newRoom.name"
+          name="name"
+          type="text"
+          class="mt-2 p-2 border rounded w-full"
+          placeholder="Enter room name"
+          required
+        />
+      </div>
+
+      <div class="mb-4">
+        <label for="floor" class="block text-gray-700">Floor</label>
+        <input
+          id="floor"
+          [(ngModel)]="newRoom.floor"
+          name="floor"
+          type="number"
+          class="mt-2 p-2 border rounded w-full"
+          placeholder="Enter floor number"
+          required
+        />
+      </div>
+
+      <div class="mb-4">
+        <label for="zoneId" class="block text-gray-700">Zone ID</label>
+        <input
+          id="zoneId"
+          [(ngModel)]="newRoom.zoneId"
+          name="zoneId"
+          type="number"
+          class="mt-2 p-2 border rounded w-full"
+          placeholder="Enter zone ID"
+          required
+        />
+      </div>
+
+      <div class="mb-4">
+        <label for="roomType" class="block text-gray-700">Room Type</label>
+        <input
+          id="roomType"
+          [(ngModel)]="newRoom.roomType"
+          name="roomType"
+          type="text"
+          class="mt-2 p-2 border rounded w-full"
+          placeholder="Enter room type"
+          required
+        />
+      </div>
+
+      <button
+        type="submit"
+        class="bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+      >
+        Submit
+      </button>
+    </form>
+  </div>
+</div>
+
+<!-- Show only Rooms for Device Technician -->
+<div *ngIf="userRole === 'DeviceTechnician'" class="mt-10">
+  <h2 class="text-xl font-semibold text-center">Rooms Assigned to You</h2>
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 p-20 space-x-7">
+    <div
+      *ngFor="let room of roomNames"
+      (click)="navigateToAddDevice(room.roomId)"
+      class="card cursor-pointer rounded-lg shadow-md overflow-hidden"
+    >
+      <div
+        class="bg-cover bg-center h-32"
+        [ngStyle]="{
+          'background-image': getBackgroundImage(room.name)
+        }"
+      ></div>
+      <div class="text-center bg-gray-100 py-2">
+        <p class="text-gray-800 font-semibold text-lg">{{ room.name }}</p>
+      </div>
+    </div>
+  </div>
+</div> 
+
+
+
+
+ 
+<footer class="bg-gray-500 text-white py-6 mt-40">
+  <div class="container mx-auto px-4">
+    <div class="flex flex-wrap justify-between">
+      <!-- Contact Details Section -->
+      <div class="w-full md:w-1/2 mb-6">
+        <h3 class="text-2xl font-semibold mb-3">Contact Us</h3>
+        <p class="mb-2">For any queries or support, feel free to reach out to us:</p>
+        <ul class="space-y-2">
+          <li><strong>Email:</strong> supportexample.com</li>
+          <li><strong>Phone:</strong> +1 (123) 456-7890</li>
+          <li><strong>Address:</strong> 123 Main St, Suite 456, City, Country</li>
+        </ul>
+      </div>
+      
+      <!-- Social Media Section -->
+      <div class="w-full md:w-1/2 mb-6">
+        <h3 class="text-2xl font-semibold mb-3">Follow Us</h3>
+        <div class="flex space-x-4">
+          <a href="#" class="text-gray-400 hover:text-white">
+            <img src="https://img.icons8.com/ios/50/000000/facebook.png" class="w-8 h-8" alt="Facebook">
+          </a>
+          <a href="#" class="text-gray-400 hover:text-white">
+            <img src="https://img.icons8.com/ios/50/000000/twitter.png" class="w-8 h-8" alt="Twitter">
+          </a>
+          <a href="#" class="text-gray-400 hover:text-white">
+            <img src="https://img.icons8.com/ios/50/000000/instagram.png" class="w-8 h-8" alt="Instagram">
+          </a>
+          <a href="#" class="text-gray-400 hover:text-white">
+            <img src="https://img.icons8.com/ios/50/000000/linkedin.png" class="w-8 h-8" alt="LinkedIn">
+          </a>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Footer Bottom Section -->
+    <div class="text-center text-gray-400 mt-6">
+      <p>&copy; 2024 Smart Home. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+
+
+

@@ -1,0 +1,202 @@
+<!-- 
+<div *ngIf="report.length > 0 && userRole==='Homeowner' || userRole==='Guest'">
+  <table>
+    <thead>
+      <tr>
+        <th>Device Name</th>
+        <th>Room Name</th>
+        <th>Total Consumption (in KWH)</th>
+        <th>Total Cost</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of report">
+        <td>{{ item.deviceName }}</td>
+        <td>{{ item.roomName }}</td>
+        <td>{{ item.totalConsumption }}</td>
+        <td>{{ item.totalCost }}</td>
+      </tr>
+    </tbody>
+  </table>
+
+  
+  <h3>Total Home Energy Consumption: {{ totalConsumption }} KWH</h3>
+  <h3>Total Home Cost: ${{ totalCost }}</h3>
+</div>
+
+<ng-template #noData>
+  <p>No report data available.</p>
+</ng-template>
+
+
+  
+
+<div>
+
+
+  <div *ngIf="monthlyReports.length > 0 && userRole==='Administrator'">
+    <h3>Monthly Energy Report for {{ userEmail }}</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>Year</th>
+          <th>Month</th>
+          <th>Total Consumption (kWh)</th>
+          <th>Total Cost</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let report of monthlyReports">
+          <td>{{ report.year }}</td>
+          <td>{{ report.month }}</td>
+          <td>{{ report.totalConsumption }}</td>
+          <td>{{ report.totalCost | currency }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div *ngIf="errorMessage" class="error">
+    <p>{{ errorMessage }}</p>
+  </div>
+</div> -->
+<div *ngIf="report.length > 0 && (userRole === 'Homeowner' || userRole === 'Guest')" class="bg-gray-900 text-white p-6 rounded-lg shadow-lg mt-10">
+  <h2 class="text-2xl font-bold mb-2">Power Consumption</h2>
+  <p class="text-sm text-gray-400 mb-6">Summary of energy consumption</p>
+
+  <!-- Daily and Monthly Summary Cards -->
+  <div class="grid grid-cols-2 gap-4 mb-6">
+    <div class="flex flex-col items-center bg-pink-100 text-pink-800 p-4 rounded-lg shadow">
+      <div class="flex items-center justify-center h-12 w-12 bg-pink-200 rounded-full">
+        <svg class="h-6 w-6 text-pink-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+        </svg>
+      </div>
+      <p class="text-3xl font-bold mt-2">{{totalConsumption}} kWh</p>
+      <p class="text-sm font-medium">Today</p>
+    </div>
+    <div class="flex flex-col items-center bg-blue-100 text-blue-800 p-4 rounded-lg shadow">
+      <div class="flex items-center justify-center h-12 w-12 bg-blue-200 rounded-full">
+        <svg class="h-6 w-6 text-blue-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+        </svg>
+      </div>
+      <p class="text-3xl font-bold mt-2">{{totalConsumption }} kWh</p>
+      <p class="text-sm font-medium">This Month</p>
+    </div>
+  </div>
+
+  <!-- Device-Specific Breakdown -->
+  <ul class="divide-y divide-gray-700">
+    <li *ngFor="let item of report" class="flex justify-between items-center py-3">
+      <div class="flex items-center space-x-3">
+        <div class="h-10 w-10 bg-gray-800 rounded-full flex items-center justify-center">
+          <svg class="h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3-1.343-3-3s1.343-3 3-3 3 1.343 3 3-1.343 3-3 3zM5.121 19.485C3.928 18.292 3 16.433 3 14.5s.928-3.792 2.121-4.985"/>
+          </svg>
+        </div>
+        <div>
+          <p class="text-base font-medium">{{ item.deviceName }}</p>
+          <p class="text-sm text-gray-400">{{ item.deviceCount }} Device{{ item.deviceCount > 1 ? 's' : '' }}</p>
+        </div>
+      </div>
+      <p class="text-lg font-bold">{{ item.totalConsumption }} kWh</p>
+    </li>
+  </ul>
+</div>
+
+<!-- Monthly Energy Report for Admin -->
+<!-- <div *ngIf="monthlyReports.length > 0 && userRole === 'Administrator'" class="mt-6">
+  <h3 class="text-xl font-bold text-gray-200 mb-4">Monthly Energy Report for {{ userEmail }}</h3>
+  <table class="table-auto w-full text-left text-gray-400">
+    <thead class="bg-gray-800">
+      <tr>
+        <th class="p-2">Year</th>
+        <th class="p-2">Month</th>
+        <th class="p-2">Total Consumption (kWh)</th>
+        <th class="p-2">Total Cost</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let report of monthlyReports" class="bg-gray-900">
+        <td class="p-2">{{ report.year }}</td>
+        <td class="p-2">{{ report.month }}</td>
+        <td class="p-2">{{ report.totalConsumption }}</td>
+        <td class="p-2">{{ report.totalCost | currency }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div> -->
+
+
+<div
+  *ngIf="monthlyReports.length > 0 && userRole === 'Administrator'"
+  class="bg-gray-900 p-6 rounded-lg shadow-lg text-gray-200 max-w-4xl mx-auto mt-20"
+>
+  <h3 class="text-2xl font-bold mb-4 text-center">Monthly Energy Report for {{ userEmail }}</h3>
+  <div class="space-y-4">
+    <div *ngFor="let report of monthlyReports" class="bg-gray-800 p-4 rounded-lg">
+      <div class="flex justify-between">
+        <span class="font-semibold">Year:</span>
+        <span>{{ report.year }}</span>
+      </div>
+      <div class="flex justify-between">
+        <span class="font-semibold">Month:</span>
+        <span>{{ report.month }}</span>
+      </div>
+      <div class="flex justify-between">
+        <span class="font-semibold">Total Consumption (kWh):</span>
+        <span>{{ report.totalConsumption }}</span>
+      </div>
+      <div class="flex justify-between">
+        <span class="font-semibold">Total Cost:</span>
+        <span>{{ report.totalCost | currency }}</span>
+      </div>
+    </div>
+    <div class="flex justify-center mt-6">
+      <img
+        src="https://t4.ftcdn.net/jpg/06/46/48/39/360_F_646483996_FU8STGnemtNlh7eprlfh1fZtBmAW8lV2.jpg"
+        class="w-28 h-28 md:w-64 md:h-64 object-cover"
+        alt="Energy Image"
+      />
+    </div>
+  </div>
+</div>
+
+
+  <div class="text-center py-12 shadow-lg bg-white p-4" *ngIf="report.length===0">
+    <p class="text-gray-600 text-lg">No Report available.</p>
+  </div>
+
+
+<!-- Error Message -->
+<div *ngIf="errorMessage" class="bg-red-100 text-red-800 p-4 rounded mt-6">
+  <p>{{ errorMessage }}</p>
+</div>
+
+
+<!-- <div class="bg-gray-800 p-6 rounded-lg shadow-md text-white mt-6 grid grid-cols-1 md:grid-cols-2 gap-4">
+  <h2 class="text-2xl font-bold mb-6">Device Power Consumption</h2>
+  <div class="h-64">
+    <canvas baseChart
+            [datasets]="chartData"
+            [labels]="chartLabels"
+            [options]="chartOptions"
+            [colors]="chartColors"
+            [legend]="true"
+            [chartType]="'line'">
+    </canvas>
+  </div>
+  <div class="mt-6 grid grid-cols-2 gap-4">
+    <div class="bg-gray-700 p-4 rounded-lg shadow-sm text-center">
+      <h3 class="text-sm font-medium text-gray-300">Total Consumption</h3>
+      <p class="text-3xl font-bold text-yellow-400">{{ totalConsumption }} kWh</p>
+    </div>
+    <div class="bg-gray-700 p-4 rounded-lg shadow-sm text-center">
+      <h3 class="text-sm font-medium text-gray-300">Average Consumption</h3>
+      <p class="text-3xl font-bold text-yellow-400">{{ totalConsumption }} kWh</p>
+    </div>
+  </div>
+</div> -->
+
+<!-- < -->

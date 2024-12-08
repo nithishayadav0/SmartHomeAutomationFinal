@@ -1,0 +1,51 @@
+<!-- 
+<div class="maintenance-form">
+    <button>Create Maintenance Request</button>
+  
+    <form (ngSubmit)="onSubmit()">
+      
+      <div>
+        <label for="maintenanceType">Maintenance Type:</label>
+        <input
+          type="text"
+          id="maintenanceType"
+          [(ngModel)]="maintenanceRequest['maintenanceType']"
+          name="maintenanceType"
+          required
+        />
+      </div>
+  
+   
+      <button type="submit">Submit</button>
+    </form>
+  </div>
+  
+   -->
+
+   <div class="maintenance-form bg-white p-6 rounded-lg shadow-md max-w-lg mx-auto mt-8">
+    <h2 class="text-2xl font-semibold text-gray-800 mb-4">Send Maintenance Request</h2>
+  
+    <form (ngSubmit)="onSubmit()" class="space-y-4">
+      <!-- Maintenance Type -->
+      <div class="flex flex-col">
+        <label for="maintenanceType" class="text-lg font-medium text-gray-700 mb-2">Maintenance Request:</label>
+        <input
+          type="text"
+          id="maintenanceType"
+          [(ngModel)]="maintenanceRequest['maintenanceType']"
+          name="maintenanceType"
+          class="border border-gray-300 rounded-md p-3 text-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-400"
+          required
+        />
+      </div>
+  
+      <!-- Submit Button -->
+      <button
+        type="submit"
+        class="w-full bg-blue-500 hover:bg-blue-600 text-white font-semibold py-3 px-4 rounded-lg transition duration-300"
+      >
+        Submit
+      </button>
+    </form>
+  </div>
+  

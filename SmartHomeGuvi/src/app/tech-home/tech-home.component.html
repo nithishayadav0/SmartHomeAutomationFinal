@@ -1,0 +1,161 @@
+
+<!-- <table *ngIf="maintenanceList.length > 0">
+    <thead>
+      <tr>
+        <th>Maintenance ID</th>
+        <th>UserName</th>
+        <th>Email</th>
+     
+        <th>Device Name</th>
+        <th>Room Name</th>
+        <th>Maintenance Type</th>
+        <th>Status</th>
+        
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let maintenance of maintenanceList">
+        <td>{{ maintenance.maintenanceId }}</td>
+        <td>{{ maintenance.username }}</td>
+        <td>{{ maintenance.userEmail }}</td>
+        <td>{{ maintenance.deviceName }}</td>
+        <td>{{ maintenance.roomName }}</td>
+        <td>{{ maintenance.maintenanceType }}</td>
+        <td>
+          <button (click)="toggleStatus(maintenance)" >
+            {{ maintenance.status }}
+          </button>
+        </td>
+        
+              
+      </tr>
+    </tbody>
+  </table> -->
+  <img 
+  src="https://t4.ftcdn.net/jpg/01/96/63/77/360_F_196637738_JddWJszm0zDOWFvldat1rOCEawn7q4rz.jpg" 
+  class="w-48 h-auto mx-auto"
+>
+
+  <h1 class="text-4xl font-semibold text-blue-600 mt-4 text-center">Welcome, {{ userName }}</h1>
+<!-- 
+  <div class="mt-10 mx-4 flex justify-between gap-6">
+    <div class="w-1/4">
+      <button (click)="navigateToUsers()" class="gap-6 w-full py-2 px-4 bg-blue-500 text-white rounded hover:bg-green-600">Get All Users</button>
+    </div>
+    <div class="w-1/4">
+      <button (click)="openLightbox()" class="gap-6 w-full py-2 px-4 bg-green-500 text-white rounded hover:bg-green-600">Get User</button>
+    </div>
+    <div class="1/4">
+      <button (click)="openLightbox()" class="gap-6 w-full py-2 px-4 bg-green-500 text-white rounded hover:bg-green-600">Log out</button>
+    </div>
+  </div>
+  
+   -->
+   <div class="mt-10 mx-4 flex gap-6">
+    <button 
+      (click)="navigateToUsers()" 
+      class="flex-1 py-2 px-4 bg-blue-500 text-white rounded hover:bg-green-600 text-center"
+    >
+      Get All Users
+    </button>
+    <button 
+      (click)="openLightbox()" 
+      class="flex-1 py-2 px-4 bg-green-500 text-white rounded hover:bg-green-600 text-center"
+    >
+      Get User
+    </button>
+    <button 
+      (click)="logout()" 
+      class="flex-1 py-2 px-4 bg-green-500 text-white rounded hover:bg-green-600 text-center"
+    >
+      Log Out
+    </button>
+  </div>
+  
+
+
+  <table *ngIf="maintenanceList.length > 0" class="min-w-full table-auto border-collapse mt-20">
+    <thead>
+      <tr class="bg-gray-200">
+        <th class="border px-4 py-2 text-left">Maintenance ID</th>
+        <th class="border px-4 py-2 text-left">UserName</th>
+        <th class="border px-4 py-2 text-left">Email</th>
+        <th class="border px-4 py-2 text-left">Device Name</th>
+        <th class="border px-4 py-2 text-left">Room Name</th>
+        <th class="border px-4 py-2 text-left">Maintenance Type</th>
+        <th class="border px-4 py-2 text-left">Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let maintenance of maintenanceList">
+        <td class="border px-4 py-2">{{ maintenance.maintenanceId }}</td>
+        <td class="border px-4 py-2">{{ maintenance.username }}</td>
+        <td class="border px-4 py-2">{{ maintenance.userEmail }}</td>
+        <td class="border px-4 py-2">{{ maintenance.deviceName }}</td>
+        <td class="border px-4 py-2">{{ maintenance.roomName }}</td>
+        <td class="border px-4 py-2">{{ maintenance.maintenanceType }}</td>
+        <td class="border px-4 py-2">
+          <button (click)="toggleStatus(maintenance)" class="bg-blue-500 hover:bg-blue-600 text-white py-1 px-3 rounded">
+            {{ maintenance.status }}
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <div>
+ 
+
+
+
+<!-- Lightbox Form -->
+<div *ngIf="isLightboxVisible" class="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
+  <div class="bg-white p-6 rounded-lg shadow-lg w-96">
+    <h2 class="text-xl font-semibold mb-4 text-center">User Details</h2>
+    <form (ngSubmit)="onSubmit()">
+      <!-- Username Field -->
+      <div class="mb-4">
+        <label for="username" class="block text-gray-700 font-medium mb-2">Username</label>
+        <input 
+          type="text" 
+          id="username" 
+          name="username"
+          [(ngModel)]="userData.username"
+          class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+          required
+        />
+      </div>
+      <!-- User Email Field -->
+      <div class="mb-4">
+        <label for="useremail" class="block text-gray-700 font-medium mb-2">User Email</label>
+        <input 
+          type="email" 
+          id="useremail" 
+          name="useremail"
+          [(ngModel)]="userData.useremail"
+          class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+          required
+        />
+      </div>
+      <!-- Buttons -->
+      <div class="flex space-x-4">
+        <button 
+          type="submit"
+          class="w-1/2 bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded-lg"
+        >
+          Submit
+        </button>
+        <button 
+          type="button" 
+          (click)="closeLightbox()"
+          class="w-1/2 bg-gray-500 hover:bg-gray-600 text-white font-semibold py-2 px-4 rounded-lg"
+        >
+          Close
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
+
+

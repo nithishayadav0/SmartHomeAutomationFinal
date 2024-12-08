@@ -1,0 +1,587 @@
+<!-- <div class="max-w-lg mx-auto mt-10 p-6 bg-white shadow-md rounded-lg">
+    <form [formGroup]="deviceForm" (ngSubmit)="onSubmit()">
+      <div class="mb-4">
+        <label for="name" class="block text-gray-700">Device Name:</label>
+        <input
+          id="name"
+          formControlName="name"
+          type="text"
+          class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
+          placeholder="Enter device name"
+        />
+        <div *ngIf="formControls['name'].invalid && formControls['name'].touched">
+            class="text-red-500 text-sm">
+          Device name is required and must be less than 100 characters.
+        </div>
+      </div>
+  
+      <div class="mb-4">
+        <label for="type" class="block text-gray-700">Device Type:</label>
+        <input
+          id="type"
+          formControlName="type"
+          type="text"
+          class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
+          placeholder="Enter device type"
+        />
+        <div *ngIf="formControls['name'].invalid && formControls['name'].touched">
+            class="text-red-500 text-sm">
+          Device type is required and must be less than 50 characters.
+        </div>
+      </div>
+  
+      <div class="mb-4">
+        <label for="location" class="block text-gray-700">Device Location:</label>
+        <input
+          id="location"
+          formControlName="location"
+          type="text"
+          class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
+          placeholder="Enter location (optional)"
+        />
+        <div *ngIf="formControls['name'].invalid && formControls['name'].touched">
+            class="text-red-500 text-sm">
+          Location should be less than 100 characters.
+        </div>
+      </div>
+  
+      <div class="mb-4">
+        <label for="status" class="block text-gray-700">Device Status:</label>
+        <input
+          id="status"
+          formControlName="status"
+          type="text"
+          class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
+          placeholder="Enter device status"
+        />
+        <div  *ngIf="formControls['name'].invalid && formControls['name'].touched">
+            class="text-red-500 text-sm">
+          Status is required and must be less than 50 characters.
+        </div>
+      </div>
+  
+      <div class="mb-4">
+        <label for="configurationSettings" class="block text-gray-700">Configuration Settings:</label>
+        <textarea
+          id="configurationSettings"
+          formControlName="configurationSettings"
+          class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
+          placeholder="Enter configuration settings (optional)"
+        ></textarea>
+      </div>
+  
+      <div class="mb-4">
+        <label for="lastUpdated" class="block text-gray-700">Last Updated:</label>
+        <input
+          id="lastUpdated"
+          formControlName="lastUpdated"
+          type="datetime-local"
+          class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
+        />
+      </div>
+  
+      <button
+        type="submit"
+        [disabled]="deviceForm.invalid"
+        class="w-full bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+      >
+        Add Device
+      </button>
+    </form>
+  </div>
+  <div class="device-list">
+    <h2>Devices in Room {{ roomId }}</h2>
+  
+    <div *ngIf="errorMessage" class="error">
+      {{ errorMessage }}
+    </div>
+  
+   <ul *ngIf="devices.length > 0; else noDevices">
+      <li *ngFor="let device of devices">
+        <strong>Name:</strong> {{ device.name }} <br />
+        <strong>Satus:</strong> {{ device.status }}
+        <strong>Speed:</strong> {{ device.configurationSettings}}
+    </ul> 
+     <ul *ngIf="devices.length > 0; else noDevices">
+        <li *ngFor="let device of devices">
+          <strong>Name:</strong> {{ device.name }} <br />
+          <strong>Status:</strong>
+          <span (click)="toggleStatus(device)">
+            {{ device.status }}
+          </span>
+          <br />
+          <strong>Speed:</strong> {{ device.configurationSettings?.speed }}
+        </li>
+      </ul>
+      
+      <ng-template #noDevices>
+        <p>No devices found.</p>
+      </ng-template>
+      
+    <ng-template #noDevices>
+      <p>No devices found for this room.</p>
+    </ng-template>
+  </div>
+   -->
+   <!-- <div class="max-w-lg mx-auto mt-10 p-6 bg-white shadow-md rounded-lg">
+    <form [formGroup]="deviceForm" (ngSubmit)="onSubmit()">
+      <div class="mb-4">
+        <label for="name" class="block text-gray-700">Device Name:</label>
+        <input
+          id="name"
+          formControlName="name"
+          type="text"
+          class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
+          placeholder="Enter device name"
+        />
+        <div *ngIf="formControls['name'].invalid && formControls['name'].touched" class="text-red-500 text-sm">
+          Device name is required and must be less than 100 characters.
+        </div>
+      </div>
+  
+      <div class="mb-4">
+        <label for="type" class="block text-gray-700">Device Type:</label>
+        <input
+          id="type"
+          formControlName="type"
+          type="text"
+          class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
+          placeholder="Enter device type"
+        />
+        <div *ngIf="formControls['type'].invalid && formControls['type'].touched" class="text-red-500 text-sm">
+          Device type is required and must be less than 50 characters.
+        </div>
+      </div>
+  
+      <div class="mb-4">
+        <label for="location" class="block text-gray-700">Device Location:</label>
+        <input
+          id="location"
+          formControlName="location"
+          type="text"
+          class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
+          placeholder="Enter location (optional)"
+        />
+        <div *ngIf="formControls['location'].invalid && formControls['location'].touched" class="text-red-500 text-sm">
+          Location should be less than 100 characters.
+        </div>
+      </div>
+  
+      <div class="mb-4">
+        <label for="status" class="block text-gray-700">Device Status:</label>
+        <input
+          id="status"
+          formControlName="status"
+          type="text"
+          class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
+          placeholder="Enter device status"
+        />
+        <div *ngIf="formControls['status'].invalid && formControls['status'].touched" class="text-red-500 text-sm">
+          Status is required and must be less than 50 characters.
+        </div>
+      </div>
+  
+      <div class="mb-4">
+        <label for="configurationSettings" class="block text-gray-700">Configuration Settings:</label>
+        <textarea
+          id="configurationSettings"
+          formControlName="configurationSettings"
+          class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
+          placeholder="Enter configuration settings (optional)"
+        ></textarea>
+      </div>
+  
+      <div class="mb-4">
+        <label for="lastUpdated" class="block text-gray-700">Last Updated:</label>
+        <input
+          id="lastUpdated"
+          formControlName="lastUpdated"
+          type="datetime-local"
+          class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
+        />
+      </div>
+  
+      <button
+        type="submit"
+        [disabled]="deviceForm.invalid"
+        class="w-full bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+      >
+        Add Device
+      </button>
+    </form>
+  </div>
+  
+  <div class="device-list">
+    <h2>Devices in Room {{ roomId }}</h2>
+  
+    <div *ngIf="errorMessage" class="error">
+      {{ errorMessage }}
+    </div>
+  
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+      <div *ngFor="let device of devices" class="bg-white shadow-lg rounded-lg p-4">
+        <h3 class="text-xl font-semibold">{{ device.name }}</h3>
+        <p  class="cursor-pointer" 
+        (click)="toggleStatus(device)" ><strong>Status:</strong> {{ device.status }}</p>
+        <p><strong>Speed:</strong> {{ device.configurationSettings?.speed }}</p>
+       
+      </div>
+    </div>
+  
+    <ng-template #noDevices>
+      <p>No devices found for this room.</p>
+    </ng-template>
+  </div>
+  
+ 
+  <div *ngIf="showLightbox" class="fixed inset-0 bg-gray-500 bg-opacity-75 flex items-center justify-center">
+    <div class="bg-white p-6 rounded-lg shadow-lg w-full max-w-lg">
+      <h3 class="text-2xl font-semibold mb-4">Add Device</h3>
+      <form [formGroup]="deviceForm" (ngSubmit)="onSubmit()">
+        
+        <button
+          type="submit"
+          [disabled]="deviceForm.invalid"
+          class="w-full bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+        >
+          Add Device
+        </button>
+      </form>
+      <button
+        (click)="toggleLightbox()"
+        class="mt-4 w-full bg-gray-300 text-black py-2 px-4 rounded-md hover:bg-gray-400 focus:outline-none"
+      >
+        Close
+      </button>
+    </div>
+  </div> -->
+  <app-navbar  *ngIf="userRole === 'Homeowner' || userRole === 'Administrator'"></app-navbar>
+  <header *ngIf="userRole === 'DeviceTechnician'" class="flex items-center justify-between bg-blue-600 text-white p-4">
+    <div class="text-3xl font-semibold">Smart House</div>
+  </header>
+
+  <div class="w-full h-screen bg-cover bg-center backdrop-blur-2xl bg-white bg-opacity-50  mt-40 w-full">
+  <div class="max-w-lg mx-auto mt-10 p-6 shadow-md rounded-lg lightbox " *ngIf="(userRole === 'Homeowner'|| userRole==='Administrator' ) && showDeviceForm"  >
+    
+    <form [formGroup]="deviceForm" (ngSubmit)="onSubmit()">
+      <button (click)="closeDeviceForm()" class="text-red-500 text-xl mx-60">&times;</button>
+      <div class="mb-4">
+        <label for="name" class="block text-gray-700">Device Name:</label>
+        <input
+          id="name"
+          formControlName="name"
+          type="text"
+          class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
+          placeholder="Enter device name"
+        />
+        <div *ngIf="formControls['name'].invalid && formControls['name'].touched"
+            class="text-red-500 text-sm">
+          Device name is required and must be less than 100 characters.
+        </div>
+      </div>
+  
+      <div class="mb-4">
+        <label for="type" class="block text-gray-700">Device Type:</label>
+        <input
+          id="type"
+          formControlName="type"
+          type="text"
+          class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
+          placeholder="Enter device type"
+        />
+        <div *ngIf="formControls['name'].invalid && formControls['name'].touched"
+            class="text-red-500 text-sm">
+          Device type is required and must be less than 50 characters.
+        </div>
+      </div>
+  
+      <div class="mb-4">
+        <label for="location" class="block text-gray-700">Device Location:</label>
+        <input
+          id="location"
+          formControlName="location"
+          type="text"
+          class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
+          placeholder="Enter location (optional)"
+        />
+        <div *ngIf="formControls['name'].invalid && formControls['name'].touched"
+            class="text-red-500 text-sm">
+          Location should be less than 100 characters.
+        </div>
+      </div>
+  
+      <div class="mb-4">
+        <label for="status" class="block text-gray-700">Device Status:</label>
+        <input
+          id="status"
+          formControlName="status"
+          type="text"
+          class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
+          placeholder="Enter device status"
+        />
+        <div  *ngIf="formControls['name'].invalid && formControls['name'].touched"
+            class="text-red-500 text-sm">
+          Status is required and must be less than 50 characters.
+        </div>
+      </div>
+      <div class="mb-4">
+        <label for="configurationSettings" class="block text-gray-700">Speed/Brightness:</label>
+        <select
+          id="configurationSettings"
+          formControlName="configurationSettings"
+          class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
+        >
+          <option value="High">High</option>
+          <option value="Medium">Medium</option>
+          <option value="Low">Low</option>
+        </select>
+      </div>
+      
+  
+      <div class="mb-4">
+        <label for="lastUpdated" class="block text-gray-700">Last Updated:</label>
+        <input
+          id="lastUpdated"
+          formControlName="lastUpdated"
+          type="datetime-local"
+          class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
+        />
+      </div>
+  
+      <button
+        type="submit"
+        [disabled]="deviceForm.invalid"
+        class="w-full bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+      >
+        Add Device
+      </button>
+    </form>
+  
+  </div> 
+  <div *ngIf="showDeviceForm" class="fixed inset-0 bg-gray-500 bg-opacity-50 backdrop-blur-sm z-40" (click)="closeDeviceForm()"></div>
+
+ <div class="device-list">
+    <h2>Devices in Room {{ roomId }}</h2>
+    <button 
+  (click)="openDeviceForm()"
+  class="bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 mx-6 items-center justify-center"
+  *ngIf="userRole === 'Homeowner' || userRole === 'Administrator'">
+  Add Device
+</button>
+<ul *ngIf="devices.length > 0; else noDevices" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mt-6 mx-6">
+  <div 
+    *ngFor="let device of devices" 
+    class="max-w-xs w-full border border-gray-200 rounded-lg shadow-md p-4 bg-gray-300 transition-all"
+    [ngClass]="{'bg-green-50/50': device.status.toLowerCase() === 'on', 'bg-gray-100': device.status.toLowerCase() !== 'on'}"
+  >
+    <div *ngIf="userRole === 'Homeowner' || userRole === 'Administrator' || userRole === 'Guest'" class="mb-3">
+      <div class="flex justify-between items-center mb-3">
+        <!-- Left Circle with Icon -->
+        <span 
+          class="inline-block w-12 h-12 rounded-full flex items-center justify-center cursor-pointer" 
+          [ngClass]="{'bg-green-500': device.status.toLowerCase() === 'on', 'bg-gray-400': device.status.toLowerCase() !== 'on'}"
+          (click)="toggleStatus(device)"
+        >
+          <img 
+            src="https://cdn-icons-png.flaticon.com/128/5555/5555829.png" 
+            alt="Left Status Icon" 
+            class="w-8 h-8" 
+          />
+        </span>
+
+        <!-- Right Circle with Icon -->
+        <span 
+          class="inline-block w-12 h-12 rounded-full flex items-center justify-center cursor-pointer" 
+          [ngClass]="{'bg-green-500': device.status.toLowerCase() === 'on', 'bg-gray-400': device.status.toLowerCase() !== 'on'}"
+          (click)="toggleStatus(device)"
+        >
+          <img 
+            src="https://cdn-icons-png.flaticon.com/128/3178/3178155.png" 
+            alt="Right Status Icon" 
+            class="w-6 h-6" 
+          />
+        </span>
+      </div>
+
+      <!-- Status Text Below -->
+      <div class="text-center mt-1">
+        <span 
+          class="font-medium cursor-pointer text-xl" 
+          [ngClass]="{'text-blue-500': device.status.toLowerCase() === 'on', 'text-gray-500': device.status.toLowerCase() !== 'on'}"
+          (click)="toggleStatus(device)"
+        >
+          {{ device.status }}
+        </span>
+      </div>
+    </div>
+
+    <div class="mb-3 text-center">
+      <strong class="text-xl font-semibold">{{ device.name }}</strong><br />
+    </div>
+
+    <!-- <div *ngIf="userRole === 'Homeowner' || userRole === 'Administrator' || userRole === 'Guest'" class="mb-3"    (click)="toggleSpeed(device)">
+   
+      <strong>Speed:</strong> {{ device.configurationSettings }}
+    </div> -->
+    <div *ngIf="userRole === 'Homeowner' || userRole === 'Administrator' || userRole === 'Guest'" class="mb-3" (click)="toggleSpeed(device)">
+      <strong>Speed:</strong> {{ device.configurationSettings }}
+  
+    </div>
+    
+    <div class="flex justify-between items-center mb-4">
+      <button
+        (click)="navigateToAddActivation(device.deviceId)"
+        class="bg-blue-600 text-white py-1.5 px-3 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+        *ngIf="userRole === 'Homeowner' || userRole === 'Administrator'"
+      >
+        Add Activation
+      </button>
+      <button
+        (click)="navigateTosendMaintenance(device.deviceId)"
+        class="bg-blue-600 text-white py-1.5 px-3 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+        *ngIf="userRole === 'Homeowner' || userRole === 'Administrator'"
+      >
+        Send Maintenance
+      </button>
+    </div>
+
+    <div *ngIf="userRole === 'DeviceTechnician' || userRole === 'Administrator'" class="mb-3">
+      <button
+        (click)="navigateToDiagnosticsReport(device.deviceId)"
+        class="bg-green-600 text-white py-1.5 px-3 rounded-md hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2"
+      >
+        Get Diagnostics Report
+      </button>
+    </div>
+
+    <div *ngIf="userRole === 'DeviceTechnician' || userRole === 'Administrator'" class="mt-3">
+      <button
+        (click)="navigateToupdateDiagnostics(device.deviceId)"
+        class="bg-yellow-600 text-white py-1.5 px-3 rounded-md hover:bg-yellow-700 focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:ring-offset-2"
+      >
+        Update Diagnostics
+      </button>
+    </div>
+  </div>
+</ul>
+
+
+
+      <ng-template #noDevices>
+        <p>No devices found.</p>
+      </ng-template>
+      
+    <ng-template #noDevices>
+      <p>No devices found for this room.</p>
+    </ng-template>
+  </div> 
+  <!-- lightbox -->
+<!-- <div *ngIf="showModal" class="lightbox">
+  <div class="form-container shadow 2xl">
+    <h2>Submit Diagnostics Report</h2>
+
+    <form [formGroup]="diagnosticsForm" (ngSubmit)="onSubmitDiagForm()">
+      <div class="form-group">
+        <label for="batteryLevel">Battery Level:</label>
+        <input id="batteryLevel" formControlName="batteryLevel" type="text" />
+      </div>
+
+      <div class="form-group">
+        <label for="connectivityStatus">Connectivity Status:</label>
+        <input id="connectivityStatus" formControlName="connectivityStatus" type="text" />
+      </div>
+
+      <div class="form-group">
+        <label for="firmwareVersion">Firmware Version:</label>
+        <input id="firmwareVersion" formControlName="firmwareVersion" type="text" />
+      </div>
+
+      <div class="form-group">
+        <label for="lastUpdated">Last Updated:</label>
+        <input id="lastUpdated" formControlName="lastUpdated" type="datetime-local" />
+      </div>
+
+      <button type="submit" [disabled]="diagnosticsForm.invalid">Submit</button>
+      <button type="button" (click)="closeModal()">Cancel</button>
+    </form>
+
+    <p *ngIf="responseMessage">{{ responseMessage }}</p>
+  </div>
+</div>  -->
+<!-- Lightbox -->
+<div *ngIf="showModal" class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
+  <div class="bg-white text-gray-900 rounded-lg shadow-lg p-8 w-full max-w-md">
+    <h2 class="text-xl font-bold mb-6 text-center">Submit Diagnostics Report</h2>
+    <form [formGroup]="diagnosticsForm" (ngSubmit)="onSubmitDiagForm()" class="space-y-4">
+      <!-- Battery Level -->
+      <div class="form-group">
+        <label for="batteryLevel" class="block text-sm font-medium mb-1">Battery Level:</label>
+        <input
+          id="batteryLevel"
+          formControlName="batteryLevel"
+          type="text"
+          class="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+        />
+      </div>
+
+      <!-- Connectivity Status -->
+      <div class="form-group">
+        <label for="connectivityStatus" class="block text-sm font-medium mb-1">Connectivity Status:</label>
+        <input
+          id="connectivityStatus"
+          formControlName="connectivityStatus"
+          type="text"
+          class="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+        />
+      </div>
+
+      <!-- Firmware Version -->
+      <div class="form-group">
+        <label for="firmwareVersion" class="block text-sm font-medium mb-1">Firmware Version:</label>
+        <input
+          id="firmwareVersion"
+          formControlName="firmwareVersion"
+          type="text"
+          class="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+        />
+      </div>
+
+      <!-- Last Updated -->
+      <div class="form-group">
+        <label for="lastUpdated" class="block text-sm font-medium mb-1">Last Updated:</label>
+        <input
+          id="lastUpdated"
+          formControlName="lastUpdated"
+          type="datetime-local"
+          class="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+        />
+      </div>
+
+      <!-- Buttons -->
+      <div class="flex justify-end space-x-3">
+        <button
+          type="submit"
+          [disabled]="diagnosticsForm.invalid"
+          class="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 disabled:opacity-50 disabled:cursor-not-allowed"
+        >
+          Submit
+        </button>
+        <button
+          type="button"
+          (click)="closeModal()"
+          class="px-4 py-2 bg-gray-300 text-gray-800 rounded hover:bg-gray-400"
+        >
+          Cancel
+        </button>
+      </div>
+    </form>
+
+    <!-- Response Message -->
+    <p *ngIf="responseMessage" class="mt-4 text-center text-green-500">{{ responseMessage }}</p>
+  </div>
+</div>
+
+
+
+
+</div>

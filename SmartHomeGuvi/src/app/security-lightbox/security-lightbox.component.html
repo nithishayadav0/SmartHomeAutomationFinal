@@ -1,0 +1,10 @@
+
+<!-- Lightbox Modal -->
+<div *ngIf="showLightbox" class="lightbox-overlay">
+    <div class="lightbox-content">
+      <h3>New Detection</h3>
+      <p>{{ detectionMessage }}</p>
+      <button (click)="closeLightbox()">Close</button>
+    </div>
+  </div>
+  

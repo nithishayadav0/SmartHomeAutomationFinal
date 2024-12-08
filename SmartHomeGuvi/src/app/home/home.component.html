@@ -1,0 +1,37 @@
+<!-- smart-home.component.html -->
+<div class="bg-blue-100 flex flex-col h-screen " *ngIf="!buttonClicked">
+  <!-- Header Section -->
+   <header class="flex items-center justify-between bg-blue-600 text-white p-4">
+    <div class="text-3xl font-semibold items-center">Smart House</div>
+  </header> 
+
+  <!-- Main Content Section -->
+  <div class="flex justify-center items-center flex-grow relative">
+   
+    <div class="w-full h-full bg-cover bg-center" style="background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQo8k6IfltL7Rnwr94TbX39KPkjHO4VeGakPHIvV7EC-iCe-WUbNykUGnogs9iz-GyyB7I&usqp=CAU');">
+      <div class="h-full flex justify-center items-center bg-black bg-opacity-50">
+        <div class="text-white text-center p-4">
+      
+          <h3 class="text-4xl font-semibold animate-slide-from-top">Smartify Your Home</h3>
+        </div>
+      </div>
+    </div>
+  
+    <div class="absolute bottom-60 w-full flex justify-center items-center space-x-4">
+      <button
+        (click)="navigateTo('register')"
+        class="px-6 py-2 text-white bg-blue-600 hover:bg-blue-700 rounded-md focus:ring-2 focus:ring-blue-500 focus:ring-offset-1"
+      >
+        Register
+      </button>
+  
+      <button
+        (click)="navigateTo('login')"
+        class="px-6 py-2 text-white bg-green-600 hover:bg-green-700 rounded-md focus:ring-2 focus:ring-green-500 focus:ring-offset-1"
+      >
+        Login
+      </button>
+    </div>
+  </div>
+  <!-- <button (click)="navigateToDevices()">Devices</button> -->
+</div>

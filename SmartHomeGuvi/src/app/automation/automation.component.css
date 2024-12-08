@@ -1,0 +1,13 @@
+:host {
+    display: block;
+  }
+  
+  .relative {
+    background: linear-gradient(
+        rgba(255, 255, 255, 0.2),
+        rgba(255, 255, 255, 0.2)
+      ),
+      url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR4373VFQLQJV53T1dhOV8-g3U4Leyju3bCsA&s');
+    background-size: cover;
+    background-position: center;
+  }

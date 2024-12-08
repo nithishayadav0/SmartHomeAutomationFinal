@@ -1,0 +1,120 @@
+<!-- 
+   <div class="bg-gray-100 p-6 rounded-lg">
+    <div class="p-4 bg-white shadow-md rounded-lg">
+      <div class="flex items-center mb-4">
+        <div class="rounded-full w-16 h-16 bg-gray-300 flex items-center justify-center">
+     
+          <span class="text-2xl font-bold">B</span>
+        </div>
+        <div class="ml-4">
+          <h2 class="text-xl font-semi-bold">Username: &nbsp;{{ user.username }}</h2> 
+          <p class="text-gray-500 font-semi-bold">UserEmail: &nbsp;{{ user.email }}</p>
+          <p class="text-gray-500 font-semi-bold">Password: &nbsp;{{ user.password }}</p>
+          <p class="text-gray-500 font-semi-bold">Role: &nbsp;{{ user.role }}</p>
+        </div>
+      </div>
+  
+      <div class="flex justify-end mt-4">
+       
+        <button class="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600">
+          Update
+        </button>
+      </div>
+    </div>
+  </div> -->
+  <h2 class="text-2xl font-bold">My Profile</h2>
+ 
+    <div class="container mx-auto p-6 max-w-lg bg-white shadow-lg rounded-lg">
+        <h2 class="text-3xl font-semibold text-center text-gray-800 mb-6">User Profile</h2>
+      
+        <!-- Display user details -->
+        <div *ngIf="!isEditMode" class="mb-6">
+          <div class="mb-4">
+            <p class="text-lg font-medium text-gray-700"><strong>Username:</strong> {{ user.username }}</p>
+          </div>
+          <div class="mb-4">
+            <p class="text-lg font-medium text-gray-700"><strong>Email:</strong> {{ user.email }}</p>
+          </div>
+          <div class="mb-4">
+            <p class="text-lg font-medium text-gray-700"><strong>Role:</strong> {{ user.role }}</p>
+          </div>
+          <button (click)="toggleEdit()" class="w-full bg-blue-500 text-white py-2 px-4 rounded mt-4 hover:bg-blue-600 transition duration-300">
+            Edit Profile
+          </button>
+        </div>
+      
+        <!-- Form to update user details -->
+        <div *ngIf="isEditMode">
+          <form [formGroup]="updateForm" (ngSubmit)="updateUser()">
+            <div class="space-y-6">
+              <!-- Username -->
+              <div class="mb-4">
+                <label for="username" class="block mb-2 text-lg font-medium text-gray-700">Username</label>
+                <input
+                  id="username"
+                  type="text"
+                  formControlName="username"
+                  class="border border-gray-300 rounded-lg px-4 py-3 w-full shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  placeholder="Enter your username"
+                />
+              </div>
+      
+              <!-- Password -->
+              <div class="mb-4">
+                <label for="password" class="block mb-2 text-lg font-medium text-gray-700">Password</label>
+                <input
+                  id="password"
+                  type="password"
+                  formControlName="password"
+                  class="border border-gray-300 rounded-lg px-4 py-3 w-full shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  placeholder="Enter your password"
+                />
+              </div>
+      
+              <!-- Role -->
+              <div class="mb-4">
+                <label for="role" class="block mb-2 text-lg font-medium text-gray-700">Role</label>
+                <select
+                  id="role"
+                  formControlName="role"
+                  class="border border-gray-300 rounded-lg px-4 py-3 w-full shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                >
+                  <option value="">Select a role</option>
+                  <option value="Homeowner">Homeowner</option>
+                  <option value="Administrator">Administrator</option>
+                  <option value="Guest">Guest</option>
+                  <option value="DeviceTechnician">Device Technician</option>
+                </select>
+              </div>
+      
+              <!-- Email -->
+              <div class="mb-4">
+                <label for="email" class="block mb-2 text-lg font-medium text-gray-700">Email</label>
+                <input
+                  id="email"
+                  type="email"
+                  formControlName="email"
+                  class="border border-gray-300 rounded-lg px-4 py-3 w-full shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  placeholder="Enter your email"
+                />
+              </div>
+      
+              <!-- IsActive -->
+              <div class="mb-4 flex items-center">
+                <input type="checkbox" formControlName="isActive" class="mr-2" />
+                <label class="text-gray-700">Active User</label>
+              </div>
+      
+              <!-- Submit Button -->
+              <button
+                type="submit"
+                [disabled]="updateForm.invalid"
+                class="w-full bg-green-500 text-white py-2 px-4 rounded mt-4 hover:bg-green-600 transition duration-300"
+              >
+                Update
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+      

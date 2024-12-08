@@ -1,0 +1,382 @@
+
+<!-- <div *ngIf="userRole === 'User'">
+
+<button (click)="navigateToGlobalAutomations()">Get Automations</button>
+<button (click)="openModal()">Get Monthly Report</button>
+
+<div *ngIf="userList.length > 0" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4"  >
+  <h3 class="text-xl font-bold mb-4">User List</h3>
+  <button (click)="navigateToUser()">Add User</button>
+  
+  
+  <div *ngFor="let user of userList" class="bg-white p-4 rounded-lg shadow-lg">
+    <div (click)="navigateToRooms(user.username, user.email)">
+    <h4 class="text-lg font-semibold">{{ user.username }}</h4>
+    <p class="text-gray-600">{{ user.email }}</p>
+    <p>Status: {{ user.isActive ? 'Active' : 'Inactive' }}</p>
+
+    
+  </div>
+  <button
+  class="bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-600 transition duration-300"
+  (click)="deactivateUser(user.email)"
+>
+  {{ user.isActive ? 'Deactivate User' : 'Activate User' }}
+</button>
+  
+
+  </div>
+</div>
+
+<div *ngIf="errorMessage" class="error-message">
+  <p class="text-red-500">{{ errorMessage }}</p>
+</div>
+
+
+<button (click)="navigateToUser()" class="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600">
+Add User
+</button>
+
+
+<div *ngIf="isLightboxOpen" class="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
+<div class="relative z-10 p-6 max-w-md w-full bg-white bg-opacity-90 border border-blue-500 rounded-xl shadow-lg h-auto">
+  <button (click)="closeLightbox()" class="absolute top-4 right-4 text-gray-500 hover:text-gray-700 text-lg">&times;</button>
+  
+  <h2 class="text-3xl font-semibold text-center mb-6 text-blue-600">User Registration</h2>
+  <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+ 
+    <div class="mb-4">
+      <label for="username" class="block mb-2 text-lg font-medium text-gray-700">Username</label>
+      <input
+        id="username"
+        type="text"
+        formControlName="username"
+        class="border border-gray-300 rounded-lg px-4 py-3 w-full shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+        placeholder="Enter your username"
+      />
+      <small class="text-red-500" *ngIf="userForm.get('username')?.errors?.['required']">
+        Username is required.
+      </small>
+    </div>
+
+
+    <div class="mb-4">
+      <label for="password" class="block mb-2 text-lg font-medium text-gray-700">Password</label>
+      <input
+        id="password"
+        type="password"
+        formControlName="password"
+        class="border border-gray-300 rounded-lg px-4 py-3 w-full shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+        placeholder="Enter your password"
+      />
+      <small class="text-red-500" *ngIf="userForm.get('password')?.errors?.['required']">
+        Password is required.
+      </small>
+    </div>
+
+    <div class="mb-4">
+      <label for="role" class="block mb-2 text-lg font-medium text-gray-700">Role</label>
+      <select
+        id="role"
+        formControlName="role"
+        class="border border-gray-300 rounded-lg px-4 py-3 w-full shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+      >
+        <option value="">Select a role</option>
+        <option value="Homeowner">Homeowner</option>
+        <option value="Administrator">Administrator</option>
+        <option value="Guest">Guest</option>
+        <option value="DeviceTechnician">Device Technician</option>
+      </select>
+      <small class="text-red-500" *ngIf="userForm.get('role')?.errors?.['required']">
+        Role is required.
+      </small>
+    </div>
+
+
+    <div class="mb-4">
+      <label for="email" class="block mb-2 text-lg font-medium text-gray-700">Email</label>
+      <input
+        id="email"
+        type="email"
+        formControlName="email"
+        class="border border-gray-300 rounded-lg px-4 py-3 w-full shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+        placeholder="Enter your email"
+      />
+      <small class="text-red-500" *ngIf="userForm.get('email')?.errors?.['required']">
+        Email is required.
+      </small>
+    </div>
+
+    <div class="mb-4 flex items-center">
+      <input type="checkbox" formControlName="isActive" class="mr-2" />
+      <label class="text-gray-700">Active User</label>
+    </div>
+
+    <button
+      type="submit"
+      class="bg-blue-500 text-white px-6 py-3 w-full rounded-lg shadow-md hover:bg-blue-600 transition duration-300"
+      [disabled]="userForm.invalid"
+    >
+      Register
+    </button>
+  </form>
+</div>
+</div>
+
+<div *ngIf="isModalOpen" class="modal-overlay">
+    <div class="modal-content">
+      <h3>Enter User Email</h3>
+      <input type="text" [(ngModel)]="userEmail" placeholder="Enter User Email" />
+      <button (click)="submitUserEmail()">Submit</button>
+      <button (click)="closeModal()">Close</button>
+    </div>
+  </div>
+</div> -->
+
+
+<div *ngIf="userRole === 'User'">
+  <!-- Buttons -->
+  <!-- <div class="flex justify-start space-x-4 mb-6">
+    <button (click)="navigateToGlobalAutomations()" class="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition duration-300">
+      Get Global Automations
+    </button>
+    <button (click)="openModal()" class="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition duration-300">
+      Get Monthly Report
+    </button>
+    <button (click)="navigateToUser()" class="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition duration-300 mt-6">
+      Add User
+    </button>
+  </div> -->
+  
+  <nav class="bg-blue-500 shadow-md p-4">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-16">
+      
+        <div class=" flex gap-2 flex-shrink-0">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQcytvWgM0-0PGFF13ystSzxtt8LYV-rYmwlg&s" class="w-10 h-10">
+          <a href="#" class="text-2xl font-bold text-white ">Smart Home</a>
+        </div>
+  
+        <!-- Navigation Buttons -->
+        <div class="flex space-x-4">
+          <button 
+            (click)="navigateToGlobalAutomations()" 
+            class="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition duration-300 text-xl"
+          >
+            Get Global Automations
+          </button>
+          <button 
+            (click)="openModal()" 
+            class="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition duration-300 text-xl"
+          >
+            Get Monthly Report
+          </button>
+          <button 
+            (click)="navigateToUser()" 
+            class="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition duration-300 text-xl"
+          >
+            Add User
+          </button>
+        </div>
+      </div>
+    </div>
+  </nav>
+  
+  <h3 class="text-3xl font-semi-bold mb-4 col-span-4 text-center mt-12">Users List</h3>
+  
+  <!-- User List -->
+  <div *ngIf="userList.length > 0" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mt-8">
+    
+    
+    <!-- User Cards -->
+    <div *ngFor="let user of userList" class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300">
+      <div (click)="navigateToRooms(user.username, user.email)" class="mb-4 cursor-pointer">
+        <h4 class="text-lg font-semibold text-blue-600">{{ user.username }}</h4>
+        <p class="text-gray-600">{{ user.email }}</p>
+        <p>Status: {{ user.isActive ? 'Active' : 'Inactive' }}</p>
+      </div>
+      <button
+      [ngClass]="{
+        'bg-red-500': user.isActive,
+        'bg-gray-500': !user.isActive
+      }"
+        class="bg-red-500 text-white px-4 py-2 rounded-lg  transition duration-300 w-full"
+        (click)="deactivateUser(user.email)"
+      >
+        {{ user.isActive ? 'Deactivate User' : 'Activate User' }}
+      </button>
+    </div>
+  </div>
+
+  <!-- Error Message -->
+  <div *ngIf="errorMessage" class="error-message text-center text-red-500 mt-4">
+    <p>{{ errorMessage }}</p>
+  </div>
+
+  <!-- Add User Button -->
+  
+
+  <!-- Lightbox Form -->
+  <div *ngIf="isLightboxOpen" class="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
+    <div class="relative z-10 p-6 max-w-md w-full bg-white bg-opacity-90 border border-blue-500 rounded-xl shadow-lg h-auto">
+      <button (click)="closeLightbox()" class="absolute top-4 right-4 text-gray-500 hover:text-gray-700 text-lg">&times;</button>
+      
+      <h2 class="text-3xl font-semibold text-center mb-6 text-blue-600">User Registration</h2>
+      <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+        <!-- Username -->
+        <div class="mb-4">
+          <label for="username" class="block mb-2 text-lg font-medium text-gray-700">Username</label>
+          <input
+            id="username"
+            type="text"
+            formControlName="username"
+            class="border border-gray-300 rounded-lg px-4 py-3 w-full shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+            placeholder="Enter your username"
+          />
+          <small class="text-red-500" *ngIf="userForm.get('username')?.errors?.['required']">
+            Username is required.
+          </small>
+        </div>
+
+        <!-- Password -->
+        <div class="mb-4">
+          <label for="password" class="block mb-2 text-lg font-medium text-gray-700">Password</label>
+          <input
+            id="password"
+            type="password"
+            formControlName="password"
+            class="border border-gray-300 rounded-lg px-4 py-3 w-full shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+            placeholder="Enter your password"
+          />
+          <small class="text-red-500" *ngIf="userForm.get('password')?.errors?.['required']">
+            Password is required.
+          </small>
+        </div>
+
+        <!-- Role -->
+        <div class="mb-4">
+          <label for="role" class="block mb-2 text-lg font-medium text-gray-700">Role</label>
+          <select
+            id="role"
+            formControlName="role"
+            class="border border-gray-300 rounded-lg px-4 py-3 w-full shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+          >
+            <option value="">Select a role</option>
+            <option value="Homeowner">Homeowner</option>
+            <option value="Administrator">Administrator</option>
+            <option value="Guest">Guest</option>
+            <option value="DeviceTechnician">Device Technician</option>
+          </select>
+          <small class="text-red-500" *ngIf="userForm.get('role')?.errors?.['required']">
+            Role is required.
+          </small>
+        </div>
+
+        <!-- Email -->
+        <div class="mb-4">
+          <label for="email" class="block mb-2 text-lg font-medium text-gray-700">Email</label>
+          <input
+            id="email"
+            type="email"
+            formControlName="email"
+            class="border border-gray-300 rounded-lg px-4 py-3 w-full shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+            placeholder="Enter your email"
+          />
+          <small class="text-red-500" *ngIf="userForm.get('email')?.errors?.['required']">
+            Email is required.
+          </small>
+        </div>
+
+        <!-- IsActive -->
+        <div class="mb-4 flex items-center">
+          <input type="checkbox" formControlName="isActive" class="mr-2" />
+          <label class="text-gray-700">Active User</label>
+        </div>
+
+        <!-- Submit Button -->
+        <button
+          type="submit"
+          class="bg-blue-500 text-white px-6 py-3 w-full rounded-lg shadow-md hover:bg-blue-600 transition duration-300"
+          [disabled]="userForm.invalid"
+        >
+          Register
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Modal -->
+  <!-- <div *ngIf="isModalOpen" class="modal-overlay">
+    <div class="modal-content">
+      <h3>Enter User Email</h3>
+      <input type="text" [(ngModel)]="userEmail" placeholder="Enter User Email" />
+      <button (click)="submitUserEmail()">Submit</button>
+      <button (click)="closeModal()">Close</button>
+    </div>
+  </div> -->
+
+  <div *ngIf="isModalOpen" class="fixed inset-0 flex items-center justify-center bg-gray-500 bg-opacity-50 z-50">
+    <div class="bg-white p-6 rounded-lg shadow-lg max-w-sm w-full space-y-4">
+      <h3 class="text-lg font-semibold text-center">Enter User Email</h3>
+  
+      <!-- Input field for User Email -->
+      <div>
+        <input
+          type="email"
+          [(ngModel)]="userEmail"
+          placeholder="Enter User Email"
+          class="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+        />
+      </div>
+  
+      <!-- Buttons -->
+      <div class="flex justify-between">
+        <button
+          (click)="submitUserEmail()"
+          class="bg-blue-500 text-white p-2 rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
+        >
+          Submit
+        </button>
+        <button
+          (click)="closeModal()"
+          class="bg-red-500 text-white p-2 rounded-md hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-500"
+        >
+          Close
+        </button>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+
+<div *ngIf="userRole === 'Technician'" class="px-6 py-12 bg-gradient-to-r from-blue-100 to-purple-100 min-h-screen">
+  <div *ngIf="technicians.length > 0" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 max-w-full">
+    <h2 class="text-3xl font-bold text-center text-gray-900 mb-6 col-span-3">Active Technicians</h2>
+    
+    <div *ngFor="let technician of technicians" class="bg-white rounded-lg shadow-lg p-10  mx-auto">
+      <div class="flex flex-col items-center text-center">
+        <strong class="text-2xl font-semibold text-gray-900">{{ technician.username }}</strong>
+        <p class="text-lg text-gray-600">Email: {{ technician.email }}</p>
+        <p class="text-lg text-gray-600">Role: {{ technician.role }}</p>
+        <p class="text-lg text-gray-600">Status: {{ technician.isActive ? 'Active' : 'Inactive' }}</p>
+        <button 
+        [ngClass]="{
+          'bg-red-500': technician.isActive,
+          'bg-gray-500': !technician.isActive
+        }"
+          class="bg-red-500 text-white px-8 py-4 rounded-lg   mt-6"
+          (click)="deactivateTechnician(technician.email)">
+          {{ technician.isActive ? 'Deactivate User' : 'Activate User' }}
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="technicians.length === 0" class="text-center text-gray-600">
+    <p>No active technicians found.</p>
+  </div>
+</div>
+
+
+
